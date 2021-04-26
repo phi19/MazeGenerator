@@ -21,9 +21,9 @@ public class LabAlgorithm {
     private void populateBlocks() {
         remainingBlocks = new LinkedList<>();
 
-        for (int y = 0; y < Constants.ALGORITHM_LAB_ROWS; y++) {
+        for (int y = 0; y < Constants.ALGORITHM_LAB_DEFAULT_ROWS; y++) {
 
-            for (int x = 0; x < Constants.ALGORITHM_LAB_COLUMNS; x++) {
+            for (int x = 0; x < Constants.ALGORITHM_LAB_DEFAULT_COLUMNS; x++) {
 
                 remainingBlocks.add(new Block(new Position(y, x)));
             }

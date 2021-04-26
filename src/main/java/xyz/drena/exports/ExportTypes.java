@@ -1,10 +1,10 @@
 package xyz.drena.exports;
 
 public enum ExportTypes {
-    TO_JSON(new ExportToJson()), // este ainda falta fazer
-    TO_SEED(new ExportToSeed()), // este é o verdadeiro .dat, que na verdade vai ficar .seed e só vai ficar um ficheiro com uma seed lá dentro
-    TO_IMAGE(new ExportToImage()), // este está bacano
-    TO_VIEW(new ExportToView()); // este está also bacano
+    TO_JSON(new ExportToJson()),
+    TO_SEED(new ExportToSeed()),
+    TO_IMAGE(new ExportToImage()),
+    TO_VIEW(new ExportToView());
 
     private final Exportable exportable;
 

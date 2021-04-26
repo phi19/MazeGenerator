@@ -4,18 +4,19 @@ import xyz.drena.exports.ExportTypes;
 
 public class Constants {
 
-    public static final int ALGORITHM_LAB_ROWS = 14;
-    public static final int ALGORITHM_LAB_COLUMNS = 11;
+    public static final int ALGORITHM_LAB_DEFAULT_ROWS = 14; // in a file
+    public static final int ALGORITHM_LAB_DEFAULT_COLUMNS = 11; // in a file
 
-    public static final int GENERATOR_LAB_ROWS = ALGORITHM_LAB_ROWS * 2 + 1;
-    public static final int GENERATOR_LAB_COLUMNS = ALGORITHM_LAB_COLUMNS * 2 + 1;
+    public static final int GENERATOR_LAB_ROWS = ALGORITHM_LAB_DEFAULT_ROWS * 2 + 1;
+    public static final int GENERATOR_LAB_COLUMNS = ALGORITHM_LAB_DEFAULT_COLUMNS * 2 + 1;
 
-    public static final int VIEWER_UNIT_SIZE = 25;
+    public static final int VIEWER_DEFAULT_UNIT_SIZE = 25;
     public static final int VIEWER_PADDING = 10;
+    public static final int VIEWER_MAXIMUM_HEIGHT = 1080 - 90*2;
 
     public static final int RANDOMIZER_TOTAL_SEEDS = 16000000;
-    public static final int RANDOMIZER_PREDEFINED_SEED = 69*69;
-    public static final boolean RANDOMIZER_USE_PREDEFINED_SEED = true;
+    public static final int RANDOMIZER_DEFAULT_SEED = 69*69;
+    public static final boolean RANDOMIZER_USE_DEFAULT_SEED = true;
 
     public static final String FILES_EXPORT_PATH = "src/main/resources/";
     public static final String FILE_EXPORT_NAME = "lab";

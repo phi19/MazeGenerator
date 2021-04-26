@@ -36,7 +36,7 @@ public class Flow {
 
     private void firstBlock() {
         // randomizer
-        int firstBlockRow = randomizer.random(Constants.ALGORITHM_LAB_ROWS);
+        int firstBlockRow = randomizer.random(Constants.ALGORITHM_LAB_DEFAULT_ROWS);
         Block firstBlock = new Block(new Position(firstBlockRow, 0));
 
         // algorithm position

@@ -2,7 +2,7 @@ package xyz.drena.exports;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-import xyz.drena.Main;
+import xyz.drena.controllers.MainController;
 import xyz.drena.view.Constants;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -11,7 +11,7 @@ import java.util.LinkedList;
 public class ExportToJson implements Exportable {
 
     @Override
-    public void export(LinkedList<Main.ExportUnits> exportUnits) {
+    public void export(LinkedList<MainController.ExportUnits> exportUnits) {
 
         JSONArray jsonUnitsArray = new JSONArray();
 

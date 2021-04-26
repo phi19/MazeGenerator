@@ -9,8 +9,8 @@ public class PseudoRandomizer {
     private final Random random;
 
     public PseudoRandomizer() {
-        if (Constants.RANDOMIZER_USE_PREDEFINED_SEED) {
-            random = new Random(Constants.RANDOMIZER_PREDEFINED_SEED);
+        if (Constants.RANDOMIZER_USE_DEFAULT_SEED) {
+            random = new Random(Constants.RANDOMIZER_DEFAULT_SEED);
         } else {
             random = new Random(generateRandomSeed());
         }
