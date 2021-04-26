@@ -1,5 +1,6 @@
 package xyz.drena.exports;
 
+import xyz.drena.controllers.ExportController;
 import xyz.drena.controllers.MainController;
 import xyz.drena.view.Constants;
 import javax.imageio.ImageIO;
@@ -12,7 +13,7 @@ import java.util.LinkedList;
 public class ExportToImage implements Exportable {
 
     @Override
-    public void export(LinkedList<MainController.ExportUnits> exportUnits) {
+    public void export(LinkedList<ExportController.ExportUnits> exportUnits) {
 
         BufferedImage bufferedImage = new BufferedImage(
                 Constants.GENERATOR_LAB_COLUMNS*Constants.EXPORT_VIEW_UNIT_SIZE,

@@ -1,6 +1,7 @@
 package xyz.drena.exports;
 
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+import xyz.drena.controllers.ExportController;
 import xyz.drena.controllers.MainController;
 import xyz.drena.view.Constants;
 
@@ -9,7 +10,7 @@ import java.util.LinkedList;
 public class ExportToView implements Exportable {
 
     @Override
-    public void export(LinkedList<MainController.ExportUnits> exportUnits) {
+    public void export(LinkedList<ExportController.ExportUnits> exportUnits) {
 
         exportUnits.forEach(exportUnit -> {
             Rectangle rectangle = new Rectangle(
