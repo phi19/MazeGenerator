@@ -18,9 +18,15 @@ public class Constants {
     public static final int RANDOMIZER_DEFAULT_SEED = 69*69;
     public static final boolean RANDOMIZER_USE_DEFAULT_SEED = true;
 
-    public static final String FILES_EXPORT_PATH = "src/main/resources/";
-    public static final String FILE_EXPORT_NAME = "lab";
+    public static final String FILES_PATH = "src/main/resources/";
 
+    public static final String FILES_DEFAULTS_PATH = FILES_PATH + "defaults/";
+    public static final String FILES_DEFAULTS_ROWS = "rows";
+    public static final String FILES_DEFAULTS_COLUMNS = "columns";
+    public static final String FILES_DEFAULTS_SEED = "seed";
+    public static final String FILES_DEFAULTS_EXTENSION = "";
+
+    public static final String EXPORT_FILE_NAME = "lab";
     public static final int EXPORT_VIEW_UNIT_SIZE = 60;
     public static final String EXPORT_SEED_EXTENSION = ".dat";
     public static final String EXPORT_IMAGE_EXTENSION = ".png";

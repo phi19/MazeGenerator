@@ -1,6 +1,6 @@
-package xyz.drena.algorithm;
+package xyz.drena.LabGeneration.algorithm;
 
-import xyz.drena.generator.Position;
+import xyz.drena.LabGeneration.Position;
 import xyz.drena.view.Constants;
 
 import java.util.LinkedList;

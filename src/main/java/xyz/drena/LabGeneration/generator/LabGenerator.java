@@ -1,5 +1,6 @@
-package xyz.drena.generator;
+package xyz.drena.LabGeneration.generator;
 
+import xyz.drena.LabGeneration.Position;
 import xyz.drena.view.Constants;
 
 import java.util.LinkedHashMap;
@@ -7,7 +8,6 @@ import java.util.LinkedHashMap;
 public class LabGenerator {
 
     private LinkedHashMap<Cell, GroundType> labCells;
-
     private Cell currentCell;
 
     public void refreshCurrentCell(Cell currentCell) { this.currentCell = currentCell; }

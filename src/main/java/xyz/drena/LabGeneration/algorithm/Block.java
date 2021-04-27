@@ -1,12 +1,14 @@
-package xyz.drena.generator;
+package xyz.drena.LabGeneration.algorithm;
+
+import xyz.drena.LabGeneration.Position;
 
 import java.util.Objects;
 
-public class Cell {
+public class Block {
 
     private final Position position;
 
-    public Cell(Position position) {
+    public Block(Position position) {
         this.position = position;
     }
 
@@ -16,8 +18,8 @@ public class Cell {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Cell cell = (Cell) o;
-        return position.equals(cell.position);
+        Block block = (Block) o;
+        return position.equals(block.position);
     }
 
     @Override
@@ -27,7 +29,8 @@ public class Cell {
 
     @Override
     public String toString() {
-        return "[" + position +
-                ']';
+        return "Block{" +
+                "position=" + position +
+                '}';
     }
 }

@@ -1,4 +1,4 @@
-package xyz.drena.algorithm;
+package xyz.drena.LabGeneration.algorithm;
 
 import xyz.drena.view.Constants;
 

@@ -1,4 +1,4 @@
-package xyz.drena.generator;
+package xyz.drena.LabGeneration;
 
 import java.util.Objects;
 

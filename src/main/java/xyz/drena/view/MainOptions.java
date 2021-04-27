@@ -2,13 +2,13 @@ package xyz.drena.view;
 
 public enum MainOptions {
 
-    SET_ROWS(1, Messages.VIEW_MAIN_SET_ROWS),
+    CHANGE_DEFAULTS(1, Messages.VIEW_MAIN_CHANGE_DEFAULTS),
 
-    SET_COLUMNS(2, Messages.VIEW_MAIN_SET_COLUMNS),
+    EDIT_MAZE(2, Messages.VIEW_MAIN_EDIT_MAZE),
 
-    SET_SEED(3, Messages.VIEW_MAIN_SET_SEED),
+    EXPORT_MAZE(3, Messages.VIEW_MAIN_EXPORT_MAZE),
 
-    GENERATE_MAZE(4, Messages.VIEW_MAIN_GENERATE_MAZE);
+    QUIT(4, Messages.VIEW_MAIN_QUIT);
 
     private final int option;
     private final String message;

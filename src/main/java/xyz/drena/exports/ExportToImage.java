@@ -1,7 +1,6 @@
 package xyz.drena.exports;
 
 import xyz.drena.controllers.ExportController;
-import xyz.drena.controllers.MainController;
 import xyz.drena.view.Constants;
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -40,7 +39,7 @@ public class ExportToImage implements Exportable {
             ImageIO.write(
                     bufferedImage,
                     Constants.EXPORT_IMAGE_EXTENSION.substring(1),
-                    new File(Constants.FILES_EXPORT_PATH + Constants.FILE_EXPORT_NAME + Constants.EXPORT_IMAGE_EXTENSION)
+                    new File(Constants.FILES_PATH + Constants.EXPORT_FILE_NAME + Constants.EXPORT_IMAGE_EXTENSION)
             );
 
         } catch (IOException ex) {

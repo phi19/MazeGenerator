@@ -1,24 +1,24 @@
-package xyz.drena;
+package xyz.drena.services;
 
-import xyz.drena.generator.Cell;
-import xyz.drena.generator.GroundType;
-import xyz.drena.generator.Position;
-import xyz.drena.algorithm.Block;
-import xyz.drena.algorithm.LabAlgorithm;
-import xyz.drena.generator.LabGenerator;
-import xyz.drena.algorithm.PseudoRandomizer;
+import xyz.drena.LabGeneration.Position;
+import xyz.drena.LabGeneration.algorithm.Block;
+import xyz.drena.LabGeneration.algorithm.LabAlgorithm;
+import xyz.drena.LabGeneration.algorithm.PseudoRandomizer;
+import xyz.drena.LabGeneration.generator.Cell;
+import xyz.drena.LabGeneration.generator.GroundType;
+import xyz.drena.LabGeneration.generator.LabGenerator;
 import xyz.drena.view.Constants;
 
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 
-public class Flow {
+public class LabGenService {
 
     private final PseudoRandomizer randomizer;
     private final LabGenerator labGenerator;
     private final LabAlgorithm labAlgorithm;
 
-    public Flow() {
+    public LabGenService() {
 
         randomizer = new PseudoRandomizer();
         labAlgorithm = new LabAlgorithm();

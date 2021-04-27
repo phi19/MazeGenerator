@@ -3,7 +3,6 @@ package xyz.drena.exports;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import xyz.drena.controllers.ExportController;
-import xyz.drena.controllers.MainController;
 import xyz.drena.view.Constants;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -28,7 +27,7 @@ public class ExportToJson implements Exportable {
 
         try {
 
-            FileWriter file = new FileWriter(Constants.FILES_EXPORT_PATH + Constants.FILE_EXPORT_NAME + Constants.EXPORT_JSON_EXTENSION);
+            FileWriter file = new FileWriter(Constants.FILES_PATH + Constants.EXPORT_FILE_NAME + Constants.EXPORT_JSON_EXTENSION);
             file.write(jsonUnitsArray.toString());
             file.flush();
 

@@ -1,4 +1,4 @@
-package xyz.drena.algorithm;
+package xyz.drena.LabGeneration.algorithm;
 
 public enum Direction {
     UP(-1, 0),

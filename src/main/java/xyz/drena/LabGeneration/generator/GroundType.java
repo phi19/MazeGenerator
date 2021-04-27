@@ -1,4 +1,4 @@
-package xyz.drena.generator;
+package xyz.drena.LabGeneration.generator;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 
 public enum GroundType {

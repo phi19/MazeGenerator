@@ -1,18 +1,17 @@
 package xyz.drena.controllers;
 
-import xyz.drena.Flow;
-import xyz.drena.generator.GroundType;
-import xyz.drena.generator.Position;
+import xyz.drena.services.LabGenService;
+import xyz.drena.LabGeneration.generator.GroundType;
+import xyz.drena.LabGeneration.Position;
 import xyz.drena.view.Constants;
-import xyz.drena.view.ExportView;
 
 import java.util.LinkedList;
 
 public class ExportController extends AbstractController {
 
-    private Flow flow;
+    private LabGenService labGenService;
 
-    public void setFlow(Flow flow) { this.flow = flow; }
+    public void setLabGenService(LabGenService labGenService) { this.labGenService = labGenService; }
 
     @Override
     public void init() {
@@ -29,7 +28,7 @@ public class ExportController extends AbstractController {
 
         LinkedList<ExportUnits> exportUnits = new LinkedList<>();
 
-        flow.getLabCells().forEach(
+        labGenService.getLabCells().forEach(
                 (cell, groundType) ->
                         exportUnits.add(new ExportUnits(cell.getPosition(), groundType))
         );
