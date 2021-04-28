@@ -7,7 +7,7 @@ import xyz.drena.LabGeneration.algorithm.PseudoRandomizer;
 import xyz.drena.LabGeneration.generator.Cell;
 import xyz.drena.LabGeneration.generator.GroundType;
 import xyz.drena.LabGeneration.generator.LabGenerator;
-import xyz.drena.view.Constants;
+import xyz.drena.view.tools.Constants;
 
 import java.util.LinkedHashMap;
 import java.util.LinkedList;

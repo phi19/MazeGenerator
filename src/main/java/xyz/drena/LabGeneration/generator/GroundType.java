@@ -4,9 +4,7 @@ import org.academiadecodigo.simplegraphics.graphics.Color;
 public enum GroundType {
 
     FLOOR(Color.WHITE, java.awt.Color.WHITE),
-    WALL(Color.BLACK, java.awt.Color.black),
-    START(Color.GREEN, java.awt.Color.GREEN),
-    END(Color.RED, java.awt.Color.RED);
+    WALL(Color.BLACK, java.awt.Color.black);
 
     private final Color color;
     private final java.awt.Color javaColor;

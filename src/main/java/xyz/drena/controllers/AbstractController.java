@@ -2,7 +2,7 @@ package xyz.drena.controllers;
 
 import xyz.drena.view.View;
 
-public class AbstractController implements Controller {
+public abstract class AbstractController implements Controller {
 
     protected View view;
 

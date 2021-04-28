@@ -1,7 +1,8 @@
-package xyz.drena.view;
+package xyz.drena.view.menus;
 
-import org.academiadecodigo.bootcamp.scanners.string.StringInputScanner;
-import xyz.drena.controllers.ExportController;
+import xyz.drena.controllers.menus.ExportController;
+import xyz.drena.view.AbstractView;
+import xyz.drena.view.tools.Messages;
 
 public class ExportView extends AbstractView {
 
@@ -11,12 +12,11 @@ public class ExportView extends AbstractView {
 
     @Override
     public void show() {
+        showMenu();
     }
 
     private void showMenu() {
+        System.out.println(Messages.MAINTENANCE_ERROR);
     }
 
-    private void askForRows() {
-
-    }
 }

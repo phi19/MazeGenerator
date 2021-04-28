@@ -1,4 +1,6 @@
-package xyz.drena.view;
+package xyz.drena.view.menuOptions;
+
+import xyz.drena.view.tools.Messages;
 
 public enum MainOptions {
 

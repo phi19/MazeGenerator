@@ -1,7 +1,10 @@
-package xyz.drena.view;
+package xyz.drena.view.menus;
 
 import org.academiadecodigo.bootcamp.scanners.menu.MenuInputScanner;
-import xyz.drena.controllers.MainController;
+import xyz.drena.controllers.menus.MainController;
+import xyz.drena.view.AbstractView;
+import xyz.drena.view.tools.Messages;
+import xyz.drena.view.menuOptions.MainOptions;
 
 public class MainView extends AbstractView {
 

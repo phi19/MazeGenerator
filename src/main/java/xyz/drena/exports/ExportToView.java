@@ -1,8 +1,8 @@
 package xyz.drena.exports;
 
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
-import xyz.drena.controllers.ExportController;
-import xyz.drena.view.Constants;
+import xyz.drena.controllers.menus.ExportController;
+import xyz.drena.view.tools.Constants;
 
 import java.util.LinkedList;
 

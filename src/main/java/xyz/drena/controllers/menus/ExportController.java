@@ -1,9 +1,10 @@
-package xyz.drena.controllers;
+package xyz.drena.controllers.menus;
 
+import xyz.drena.controllers.AbstractController;
 import xyz.drena.services.LabGenService;
 import xyz.drena.LabGeneration.generator.GroundType;
 import xyz.drena.LabGeneration.Position;
-import xyz.drena.view.Constants;
+import xyz.drena.view.tools.Constants;
 
 import java.util.LinkedList;
 
@@ -16,7 +17,7 @@ public class ExportController extends AbstractController {
     @Override
     public void init() {
         super.init();
-        export();
+        //export();
     }
 
     public void export() {

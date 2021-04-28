@@ -1,7 +1,7 @@
 package xyz.drena.LabGeneration.generator;
 
 import xyz.drena.LabGeneration.Position;
-import xyz.drena.view.Constants;
+import xyz.drena.view.tools.Constants;
 
 import java.util.LinkedHashMap;
 

@@ -1,6 +1,6 @@
 package xyz.drena.LabGeneration.algorithm;
 
-import xyz.drena.view.Constants;
+import xyz.drena.view.tools.Constants;
 
 import java.util.Random;
 

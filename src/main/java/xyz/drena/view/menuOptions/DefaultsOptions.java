@@ -1,14 +1,17 @@
-package xyz.drena.view;
+package xyz.drena.view.menuOptions;
+
+import xyz.drena.view.tools.Constants;
+import xyz.drena.view.tools.Messages;
 
 public enum DefaultsOptions {
 
-    SET_ROWS(1, Messages.VIEW_DEFAULT_OPTIONS_MENU_ROWS, Constants.FILES_DEFAULTS_ROWS),
+    SET_ROWS(1, Messages.VIEW_DEFAULTS_ROWS, Constants.FILES_DEFAULTS_ROWS),
 
-    SET_COLUMNS(2, Messages.VIEW_DEFAULT_OPTIONS_MENU_COLUMNS, Constants.FILES_DEFAULTS_COLUMNS),
+    SET_COLUMNS(2, Messages.VIEW_DEFAULTS_COLUMNS, Constants.FILES_DEFAULTS_COLUMNS),
 
-    SET_SEED(3, Messages.VIEW_DEFAULT_OPTIONS_MENU_SEED, Constants.FILES_DEFAULTS_SEED),
+    SET_SEED(3, Messages.VIEW_DEFAULTS_SEED, Constants.FILES_DEFAULTS_SEED),
 
-    GO_BACK(4, Messages.VIEW_DEFAULT_OPTIONS_MENU_QUIT, "");
+    GO_BACK(4, Messages.VIEW_DEFAULTS_QUIT, "");
 
     private final int option;
     private final String menuMessage;
