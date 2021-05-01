@@ -6,22 +6,15 @@ import java.util.Random;
 
 public class PseudoRandomizer {
 
-    private final Random random;
+    private static final long SEED = Constants.RANDOMIZER_USE_DEFAULT_SEED ? Constants.RANDOMIZER_DEFAULT_SEED : generateRandomSeed();
+    private static final Random SEED_GENERATION = new Random(SEED);
 
-    public PseudoRandomizer() {
-        if (Constants.RANDOMIZER_USE_DEFAULT_SEED) {
-            random = new Random(Constants.RANDOMIZER_DEFAULT_SEED);
-        } else {
-            random = new Random(generateRandomSeed());
-        }
-    }
-
-    private long generateRandomSeed() {
+    private static long generateRandomSeed() {
         return (long) (Math.random()*Constants.RANDOMIZER_TOTAL_SEEDS);
     }
 
-    public int random(int total) {
-        return (int) Math.floor(random.nextDouble() * total);
+    public static int random(int total) {
+        return (int) Math.floor(SEED_GENERATION.nextDouble() * total);
     }
 
 }

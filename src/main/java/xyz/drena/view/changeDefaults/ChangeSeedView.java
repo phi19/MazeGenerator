@@ -13,10 +13,10 @@ public class ChangeSeedView extends AbstractView {
 
     @Override
     public void show() {
-        askForSeed();
+        askForInput();
     }
 
-    private void askForSeed() {
+    private void askForInput() {
         DoubleInputScanner scanner = new DoubleInputScanner();
         scanner.setMessage(Messages.VIEW_SET_SEED_MESSAGE);
         scanner.setError(Messages.VIEW_SET_SEED_ERROR);

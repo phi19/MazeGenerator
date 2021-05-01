@@ -1,33 +1,32 @@
-package xyz.drena.exports;
+package xyz.drena.LabGeneration.exports;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-import xyz.drena.controllers.menus.ExportController;
+import xyz.drena.LabGeneration.MazeExport;
 import xyz.drena.view.tools.Constants;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.LinkedList;
 
-public class ExportToJson implements Exportable {
+public class ExportToJson extends AbstractExportable {
 
     @Override
-    public void export(LinkedList<ExportController.ExportUnits> exportUnits) {
+    public void export(LinkedList<MazeExport.ExportUnits> exportUnits, String fileName) {
 
         JSONArray jsonUnitsArray = new JSONArray();
 
-        exportUnits.forEach(exportUnit -> {
-
+        for (MazeExport.ExportUnits exportUnit : exportUnits) {
             JSONObject jsonUnit = new JSONObject();
             jsonUnit.put("row", exportUnit.getRow());
             jsonUnit.put("col", exportUnit.getCol());
             jsonUnit.put("GroundType", exportUnit.getGroundType());
 
             jsonUnitsArray.put(jsonUnit);
-        });
+        }
 
         try {
 
-            FileWriter file = new FileWriter(Constants.FILES_PATH + Constants.EXPORT_FILE_NAME + Constants.EXPORT_JSON_EXTENSION);
+            FileWriter file = new FileWriter(Constants.FILES_PATH + fileName + Constants.EXPORT_JSON_EXTENSION);
             file.write(jsonUnitsArray.toString());
             file.flush();
 

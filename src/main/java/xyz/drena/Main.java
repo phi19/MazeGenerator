@@ -1,16 +1,18 @@
 package xyz.drena;
 
 import org.academiadecodigo.bootcamp.Prompt;
+import xyz.drena.LabGeneration.MazeExport;
 import xyz.drena.controllers.Controller;
 import xyz.drena.controllers.defaultChanges.ChangeColumnsController;
 import xyz.drena.controllers.defaultChanges.ChangeRowsController;
 import xyz.drena.controllers.defaultChanges.ChangeSeedController;
 import xyz.drena.controllers.menus.DefaultsController;
 import xyz.drena.controllers.menus.EditController;
-import xyz.drena.controllers.menus.ExportController;
+import xyz.drena.controllers.menus.GenerationController;
 import xyz.drena.controllers.menus.MainController;
 import xyz.drena.services.ChangeDefaultsService;
-import xyz.drena.services.LabGenService;
+import xyz.drena.LabGeneration.MazeGeneration;
+import xyz.drena.services.MazeGenService;
 import xyz.drena.view.changeDefaults.ChangeColumnsView;
 import xyz.drena.view.changeDefaults.ChangeRowsView;
 import xyz.drena.view.changeDefaults.ChangeSeedView;
@@ -34,7 +36,9 @@ public class Main {
         // some initial independent properties && services
         Prompt prompt = new Prompt(System.in, System.out);
         ChangeDefaultsService changeDefaultsService = new ChangeDefaultsService();
-        LabGenService labGenService = new LabGenService();
+        MazeGenService mazeGenService = new MazeGenService();
+        MazeGeneration mazeGeneration = new MazeGeneration();
+        MazeExport mazeExport = new MazeExport();
 
         // mainVC
         MainView mainView = new MainView();
@@ -73,10 +77,10 @@ public class Main {
         editController.setView(editView);
 
         // exportMazeVC
-        ExportView exportView = new ExportView();
-        ExportController exportController = new ExportController();
-        exportView.setExportController(exportController);
-        exportController.setView(exportView);
+        GenerationView generationView = new GenerationView();
+        GenerationController generationController = new GenerationController();
+        generationView.setGenerationController(generationController);
+        generationController.setView(generationView);
 
         // independent properties to mainVC
         mainView.setPrompt(prompt);
@@ -91,17 +95,21 @@ public class Main {
         // independent properties to changeSeedVC
         changeSeedView.setPrompt(prompt);
         changeSeedController.setChangeDefaultsService(changeDefaultsService);
-        // independent properties to editMazeVC
+        // independent properties to editVC
         editView.setPrompt(prompt);
-        // independent properties to exportMazeVC
-        editView.setPrompt(prompt);
-        exportController.setLabGenService(labGenService);
+        // independent properties to generationVC
+        generationView.setPrompt(prompt);
+        generationController.setMazeGenService(mazeGenService);
+
+        //independent properties to mazeGenService
+        mazeGenService.setMazeGeneration(mazeGeneration);
+        mazeGenService.setMazeExport(mazeExport);
 
         // setup the mainMenuController map
         Map<Integer, Controller> mainControllerMap = new HashMap<>();
         mainControllerMap.put(MainOptions.CHANGE_DEFAULTS.getOption(), defaultsController);
+        mainControllerMap.put(MainOptions.GENERATE_MAZES.getOption(), generationController);
         mainControllerMap.put(MainOptions.EDIT_MAZE.getOption(), editController);
-        mainControllerMap.put(MainOptions.EXPORT_MAZE.getOption(), exportController);
 
         mainController.setControllerMap(mainControllerMap);
 

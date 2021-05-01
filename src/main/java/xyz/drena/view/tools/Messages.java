@@ -9,8 +9,8 @@ public class Messages {
     public static final String VIEW_MAIN_ERROR = "You can't do that!";
 
     public static final String VIEW_MAIN_CHANGE_DEFAULTS = "Change Default Options";
-    public static final String VIEW_MAIN_EDIT_MAZE = "Generate and Edit Maze";
-    public static final String VIEW_MAIN_EXPORT_MAZE = "Generate and Export Maze(s)";
+    public static final String VIEW_MAIN_EXPORT_MAZE = "Generate Maze(s)";
+    public static final String VIEW_MAIN_EDIT_MAZE = "Edit Maze";
     public static final String VIEW_MAIN_QUIT = "Quit";
 
     public static final String VIEW_DEFAULTS_MESSAGE = "What default do you want to change?";
@@ -29,5 +29,8 @@ public class Messages {
 
     public static final String VIEW_SET_SEED_MESSAGE = "\nInsert the seed you want to use: ";
     public static final String VIEW_SET_SEED_ERROR = "That is not a valid seed!";
+
+    public static final String VIEW_NUMBER_MAZES_MESSAGE = "\nHow many mazes do you want to generate? ";
+    public static final String VIEW_NUMBER_MAZES_ERROR = "That is not a valid number!";
 
 }

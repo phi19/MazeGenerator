@@ -1,6 +1,6 @@
 package xyz.drena.view.tools;
 
-import xyz.drena.exports.ExportTypes;
+import xyz.drena.LabGeneration.exports.ExportTypes;
 
 public class Constants {
 
@@ -15,7 +15,7 @@ public class Constants {
     public static final int VIEWER_MAXIMUM_HEIGHT = 1080 - 90*2;
 
     public static final int RANDOMIZER_TOTAL_SEEDS = 16000000;
-    public static final int RANDOMIZER_DEFAULT_SEED = 69*69;
+    public static final int RANDOMIZER_DEFAULT_SEED = 69*69; // in a file
     public static final boolean RANDOMIZER_USE_DEFAULT_SEED = true;
 
     public static final String FILES_PATH = "src/main/resources/";
@@ -26,11 +26,8 @@ public class Constants {
     public static final String FILES_DEFAULTS_SEED = "seed";
     public static final String FILES_DEFAULTS_EXTENSION = "";
 
-    public static final String EXPORT_FILE_NAME = "lab";
     public static final int EXPORT_VIEW_UNIT_SIZE = 60;
     public static final String EXPORT_SEED_EXTENSION = ".dat";
     public static final String EXPORT_IMAGE_EXTENSION = ".png";
     public static final String EXPORT_JSON_EXTENSION = ".json";
-    public static final ExportTypes EXPORT_TYPE = ExportTypes.TO_VIEW;
-
 }

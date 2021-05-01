@@ -12,8 +12,9 @@ public class LabGenerator {
 
     public void refreshCurrentCell(Cell currentCell) { this.currentCell = currentCell; }
 
-    public LabGenerator() {
+    public void init() {
         populateLabCells();
+        currentCell = null;
     }
 
     private void populateLabCells() {

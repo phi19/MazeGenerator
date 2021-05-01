@@ -6,6 +6,6 @@ public class ChangeRowsView extends ChangeLengthView {
 
     @Override
     public void show() {
-        askForLength(Messages.VIEW_SET_LENGTH_ROWS);
+        askForInput(Messages.VIEW_SET_LENGTH_ROWS);
     }
 }

@@ -8,14 +8,13 @@ import java.util.LinkedList;
 public class LabAlgorithm {
 
     private LinkedList<Block> remainingBlocks;
-
-    private final LinkedList<Block> currentPath;
-
+    private LinkedList<Block> currentPath;
     private Block currentBlock;
 
-    public LabAlgorithm() {
+    public void init() {
         populateBlocks();
         currentPath = new LinkedList<>();
+        currentBlock = null;
     }
 
     private void populateBlocks() {

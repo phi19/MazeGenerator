@@ -1,6 +1,7 @@
-package xyz.drena.exports;
+package xyz.drena.LabGeneration.exports;
 
 public enum ExportTypes {
+
     TO_JSON(new ExportToJson()),
     TO_SEED(new ExportToSeed()),
     TO_IMAGE(new ExportToImage()),
@@ -14,5 +15,6 @@ public enum ExportTypes {
 
     public Exportable getExportable() {
         return exportable;
+
     }
 }

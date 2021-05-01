@@ -6,9 +6,9 @@ public enum MainOptions {
 
     CHANGE_DEFAULTS(1, Messages.VIEW_MAIN_CHANGE_DEFAULTS),
 
-    EDIT_MAZE(2, Messages.VIEW_MAIN_EDIT_MAZE),
+    GENERATE_MAZES(2, Messages.VIEW_MAIN_EXPORT_MAZE),
 
-    EXPORT_MAZE(3, Messages.VIEW_MAIN_EXPORT_MAZE),
+    EDIT_MAZE(3, Messages.VIEW_MAIN_EDIT_MAZE),
 
     QUIT(4, Messages.VIEW_MAIN_QUIT);
 

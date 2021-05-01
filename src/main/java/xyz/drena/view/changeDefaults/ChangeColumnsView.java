@@ -6,6 +6,6 @@ public class ChangeColumnsView extends ChangeLengthView {
 
     @Override
     public void show() {
-        askForLength(Messages.VIEW_SET_LENGTH_COLUMNS);
+        askForInput(Messages.VIEW_SET_LENGTH_COLUMNS);
     }
 }

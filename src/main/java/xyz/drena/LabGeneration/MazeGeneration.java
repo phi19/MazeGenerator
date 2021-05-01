@@ -1,6 +1,5 @@
-package xyz.drena.services;
+package xyz.drena.LabGeneration;
 
-import xyz.drena.LabGeneration.Position;
 import xyz.drena.LabGeneration.algorithm.Block;
 import xyz.drena.LabGeneration.algorithm.LabAlgorithm;
 import xyz.drena.LabGeneration.algorithm.PseudoRandomizer;
@@ -12,20 +11,20 @@ import xyz.drena.view.tools.Constants;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 
-public class LabGenService {
+public class MazeGeneration {
 
-    private final PseudoRandomizer randomizer;
     private final LabGenerator labGenerator;
     private final LabAlgorithm labAlgorithm;
 
-    public LabGenService() {
+    public MazeGeneration() {
 
-        randomizer = new PseudoRandomizer();
         labAlgorithm = new LabAlgorithm();
         labGenerator = new LabGenerator();
     }
 
     public void init() {
+        labAlgorithm.init();
+        labGenerator.init();
 
         firstBlock();
 
@@ -36,7 +35,7 @@ public class LabGenService {
 
     private void firstBlock() {
         // randomizer
-        int firstBlockRow = randomizer.random(Constants.ALGORITHM_LAB_DEFAULT_ROWS);
+        int firstBlockRow = PseudoRandomizer.random(Constants.ALGORITHM_LAB_DEFAULT_ROWS);
         Block firstBlock = new Block(new Position(firstBlockRow, 0));
 
         // algorithm position
@@ -52,7 +51,7 @@ public class LabGenService {
         if (nextPossibleBlocks.size() != 0) {
 
             // randomizer
-            int randomDirectionIndex = randomizer.random(nextPossibleBlocks.size());
+            int randomDirectionIndex = PseudoRandomizer.random(nextPossibleBlocks.size());
             Block forwardBlock = nextPossibleBlocks.get(randomDirectionIndex);
 
             // algorithm position
