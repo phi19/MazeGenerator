@@ -26,10 +26,4 @@ public class Cell {
     public int hashCode() {
         return Objects.hash(position);
     }
-
-    @Override
-    public String toString() {
-        return "[" + position +
-                ']';
-    }
 }

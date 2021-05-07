@@ -1,5 +1,6 @@
 package xyz.drena;
 
+import com.sun.xml.internal.ws.util.StringUtils;
 import org.academiadecodigo.bootcamp.Prompt;
 import xyz.drena.LabGeneration.MazeExport;
 import xyz.drena.controllers.Controller;
@@ -19,16 +20,28 @@ import xyz.drena.view.changeDefaults.ChangeSeedView;
 import xyz.drena.view.menuOptions.DefaultsOptions;
 import xyz.drena.view.menuOptions.MainOptions;
 import xyz.drena.view.menus.*;
+import xyz.drena.view.tools.Constants;
 
+import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
+import java.util.zip.ZipOutputStream;
 
 public class Main {
+
+    private static final byte[] secretSignature = { 10, 20 };
 
     public static void main(String[] args) {
         Main main = new Main();
         main.bootStrap();
-
     }
 
     private void bootStrap() {

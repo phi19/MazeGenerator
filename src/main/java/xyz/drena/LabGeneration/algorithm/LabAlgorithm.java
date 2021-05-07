@@ -3,22 +3,23 @@ package xyz.drena.LabGeneration.algorithm;
 import xyz.drena.LabGeneration.Position;
 import xyz.drena.view.tools.Constants;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class LabAlgorithm {
 
-    private LinkedList<Block> remainingBlocks;
-    private LinkedList<Block> currentPath;
+    private ArrayList<Block> remainingBlocks;
+    private ArrayList<Block> currentPath;
     private Block currentBlock;
 
     public void init() {
         populateBlocks();
-        currentPath = new LinkedList<>();
+        currentPath = new ArrayList<>();
         currentBlock = null;
     }
 
     private void populateBlocks() {
-        remainingBlocks = new LinkedList<>();
+        remainingBlocks = new ArrayList<>();
 
         for (int y = 0; y < Constants.ALGORITHM_LAB_DEFAULT_ROWS; y++) {
 
@@ -40,9 +41,9 @@ public class LabAlgorithm {
         return remainingBlocks.size() != 0;
     }
 
-    public LinkedList<Block> sideBlocks() {
+    public ArrayList<Block> sideBlocks() {
 
-        LinkedList<Block> sideBlocks = new LinkedList<>();
+        ArrayList<Block> sideBlocks = new ArrayList<>();
 
         for (Direction direction : Direction.values()) {
 
@@ -65,8 +66,8 @@ public class LabAlgorithm {
 
     public Block goBackwards() {
 
-        currentBlock = currentPath.getLast();
-        currentPath.removeLast();
+        currentBlock = currentPath.get(currentPath.size() - 1);
+        currentPath.remove(currentPath.size() - 1);
         return currentBlock;
     }
 }

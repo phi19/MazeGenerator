@@ -26,7 +26,7 @@ public class ExportToJson extends AbstractExportable {
 
         try {
 
-            FileWriter file = new FileWriter(Constants.FILES_PATH + fileName + Constants.EXPORT_JSON_EXTENSION);
+            FileWriter file = new FileWriter(Constants.FILES_MAZES_COORDINATES_PATH + fileName + Constants.EXPORT_JSON_EXTENSION);
             file.write(jsonUnitsArray.toString());
             file.flush();
 

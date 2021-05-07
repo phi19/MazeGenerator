@@ -9,7 +9,7 @@ public class GenerationController extends AbstractController {
 
     public void setMazeGenService(MazeGenService mazeGenService) { this.mazeGenService = mazeGenService; }
 
-    public void handleValue(int option) {
-        mazeGenService.generate(option);
+    public void handleValue(int value, String fileNamePrefix) {
+        mazeGenService.generate(value, fileNamePrefix);
     }
 }

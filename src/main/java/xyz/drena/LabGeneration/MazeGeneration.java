@@ -8,8 +8,8 @@ import xyz.drena.LabGeneration.generator.GroundType;
 import xyz.drena.LabGeneration.generator.LabGenerator;
 import xyz.drena.view.tools.Constants;
 
-import java.util.LinkedHashMap;
-import java.util.LinkedList;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class MazeGeneration {
 
@@ -46,7 +46,7 @@ public class MazeGeneration {
     }
 
     private void nextBlock() {
-        LinkedList<Block> nextPossibleBlocks = labAlgorithm.sideBlocks();
+        ArrayList<Block> nextPossibleBlocks = labAlgorithm.sideBlocks();
 
         if (nextPossibleBlocks.size() != 0) {
 
@@ -74,5 +74,5 @@ public class MazeGeneration {
         return new Cell(new Position(block.getPosition().getRow()*2 + 1, block.getPosition().getCol()*2 + 1));
     }
 
-    public LinkedHashMap<Cell, GroundType> getLabCells() { return labGenerator.getLabCells(); }
+    public HashMap<Cell, GroundType> getLabCells() { return labGenerator.getLabCells(); }
 }

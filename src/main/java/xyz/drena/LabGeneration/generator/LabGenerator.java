@@ -3,6 +3,7 @@ package xyz.drena.LabGeneration.generator;
 import xyz.drena.LabGeneration.Position;
 import xyz.drena.view.tools.Constants;
 
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 
 public class LabGenerator {
@@ -46,5 +47,5 @@ public class LabGenerator {
         return new Cell(new Position(middleCellRow, middleCellCol));
     }
 
-    public LinkedHashMap<Cell, GroundType> getLabCells() { return labCells; }
+    public HashMap<Cell, GroundType> getLabCells() { return labCells; }
 }

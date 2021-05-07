@@ -40,7 +40,7 @@ public class ExportToImage extends AbstractExportable {
             ImageIO.write(
                     bufferedImage,
                     Constants.EXPORT_IMAGE_EXTENSION.substring(1),
-                    new File(Constants.FILES_PATH + fileName + Constants.EXPORT_IMAGE_EXTENSION)
+                    new File(Constants.FILES_MAZES_IMAGES_PATH + fileName + Constants.EXPORT_IMAGE_EXTENSION)
             );
 
         } catch (IOException ex) {

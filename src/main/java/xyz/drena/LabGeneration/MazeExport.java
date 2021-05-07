@@ -1,22 +1,20 @@
 package xyz.drena.LabGeneration;
 
-import xyz.drena.LabGeneration.Position;
 import xyz.drena.LabGeneration.exports.ExportTypes;
 import xyz.drena.LabGeneration.generator.Cell;
 import xyz.drena.LabGeneration.generator.GroundType;
-
-import java.util.LinkedHashMap;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 
 public class MazeExport {
 
-    public void export(LinkedHashMap<Cell, GroundType> labCells, ExportTypes exportType, String fileName) {
+    public void export(HashMap<Cell, GroundType> labCells, ExportTypes exportType, String fileName) {
 
         exportType.getExportable().export(extractExportUnits(labCells), fileName);
     }
 
-    private LinkedList<ExportUnits> extractExportUnits(LinkedHashMap<Cell, GroundType> labCells) {
+    private LinkedList<ExportUnits> extractExportUnits(HashMap<Cell, GroundType> labCells) {
 
         LinkedList<ExportUnits> exportUnits = new LinkedList<>();
 
