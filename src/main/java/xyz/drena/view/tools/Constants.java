@@ -30,8 +30,9 @@ public class Constants {
     public static final String EXPORT_IMAGE_EXTENSION = ".png";
 
     public static final String FILES_MAZES_COORDINATES_PATH = FILES_PATH + "mazes_jseeds/";
-    public static final String EXPORT_SEED_EXTENSION = ".dat";
+    public static final String EXPORT_SEED_EXTENSION = ".seed";
     public static final String EXPORT_JSON_EXTENSION = ".json";
+    public static final String EXPORT_LAB_EXTENSION = ".lab";
 
     public static final int EXPORT_VIEW_UNIT_SIZE = 60;
 }

@@ -23,8 +23,6 @@ import java.util.Map;
 
 public class Main {
 
-    private static final byte[] secretSignature = { 10, 20 };
-
     public static void main(String[] args) {
         Main main = new Main();
         main.bootStrap();

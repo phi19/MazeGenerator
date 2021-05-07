@@ -5,6 +5,7 @@ public enum ExportTypes {
     TO_JSON(new ExportToJson()),
     TO_SEED(new ExportToSeed()),
     TO_IMAGE(new ExportToImage()),
+    TO_LAB(new ExportToLab()),
     TO_VIEW(new ExportToView());
 
     private final Exportable exportable;
@@ -15,6 +16,5 @@ public enum ExportTypes {
 
     public Exportable getExportable() {
         return exportable;
-
     }
 }
