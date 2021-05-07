@@ -8,7 +8,7 @@ public class Messages {
     public static final String VIEW_MAIN_MESSAGE = "What do you want to do? ";
     public static final String VIEW_MAIN_ERROR = "You can't do that!";
 
-    public static final String VIEW_MAIN_CHANGE_DEFAULTS = "Change Default Options";
+    public static final String VIEW_MAIN_CHANGE_DEFAULTS = "Change Default Settings";
     public static final String VIEW_MAIN_EXPORT_MAZE = "Generate Maze(s)";
     public static final String VIEW_MAIN_EDIT_MAZE = "Edit Maze";
     public static final String VIEW_MAIN_QUIT = "Quit";
@@ -16,8 +16,8 @@ public class Messages {
     public static final String VIEW_DEFAULTS_MESSAGE = "What default do you want to change?";
     public static final String VIEW_DEFAULTS_ERROR = "That is not a default";
 
-    public static final String VIEW_DEFAULTS_ROWS = "Set Rows";
-    public static final String VIEW_DEFAULTS_COLUMNS = "Set Columns";
+    public static final String VIEW_DEFAULTS_ROWS = "Set Default Rows";
+    public static final String VIEW_DEFAULTS_COLUMNS = "Set Default Columns";
     public static final String VIEW_DEFAULTS_SEED = "Set Seed";
     public static final String VIEW_DEFAULTS_QUIT = "Go back";
 

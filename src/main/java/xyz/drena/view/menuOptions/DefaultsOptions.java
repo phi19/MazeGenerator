@@ -9,9 +9,7 @@ public enum DefaultsOptions {
 
     SET_COLUMNS(2, Messages.VIEW_DEFAULTS_COLUMNS, Constants.FILES_DEFAULTS_COLUMNS),
 
-    SET_SEED(3, Messages.VIEW_DEFAULTS_SEED, Constants.FILES_DEFAULTS_SEED),
-
-    GO_BACK(4, Messages.VIEW_DEFAULTS_QUIT, "");
+    GO_BACK(3, Messages.VIEW_DEFAULTS_QUIT, "");
 
     private final int option;
     private final String menuMessage;

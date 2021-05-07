@@ -1,12 +1,10 @@
 package xyz.drena;
 
-import com.sun.xml.internal.ws.util.StringUtils;
 import org.academiadecodigo.bootcamp.Prompt;
 import xyz.drena.LabGeneration.MazeExport;
 import xyz.drena.controllers.Controller;
 import xyz.drena.controllers.defaultChanges.ChangeColumnsController;
 import xyz.drena.controllers.defaultChanges.ChangeRowsController;
-import xyz.drena.controllers.defaultChanges.ChangeSeedController;
 import xyz.drena.controllers.menus.DefaultsController;
 import xyz.drena.controllers.menus.EditController;
 import xyz.drena.controllers.menus.GenerationController;
@@ -16,24 +14,12 @@ import xyz.drena.LabGeneration.MazeGeneration;
 import xyz.drena.services.MazeGenService;
 import xyz.drena.view.changeDefaults.ChangeColumnsView;
 import xyz.drena.view.changeDefaults.ChangeRowsView;
-import xyz.drena.view.changeDefaults.ChangeSeedView;
 import xyz.drena.view.menuOptions.DefaultsOptions;
 import xyz.drena.view.menuOptions.MainOptions;
 import xyz.drena.view.menus.*;
-import xyz.drena.view.tools.Constants;
 
-import java.io.*;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipInputStream;
-import java.util.zip.ZipOutputStream;
 
 public class Main {
 
@@ -77,12 +63,6 @@ public class Main {
         changeColumnsView.setChangeLengthController(changeColumnsController);
         changeColumnsController.setView(changeColumnsView);
 
-        // changeSeedVC
-        ChangeSeedView changeSeedView = new ChangeSeedView();
-        ChangeSeedController changeSeedController = new ChangeSeedController();
-        changeSeedView.setChangeSeedController(changeSeedController);
-        changeSeedController.setView(changeSeedView);
-
         // editMazeVC
         EditView editView = new EditView();
         EditController editController = new EditController();
@@ -105,9 +85,6 @@ public class Main {
         // independent properties to changeColumnsVC
         changeColumnsView.setPrompt(prompt);
         changeColumnsController.setChangeDefaultsService(changeDefaultsService);
-        // independent properties to changeSeedVC
-        changeSeedView.setPrompt(prompt);
-        changeSeedController.setChangeDefaultsService(changeDefaultsService);
         // independent properties to editVC
         editView.setPrompt(prompt);
         // independent properties to generationVC
@@ -130,7 +107,6 @@ public class Main {
         Map<Integer, Controller> defaultsControllerMap = new HashMap<>();
         defaultsControllerMap.put(DefaultsOptions.SET_ROWS.getOption(), changeRowsController);
         defaultsControllerMap.put(DefaultsOptions.SET_COLUMNS.getOption(), changeColumnsController);
-        defaultsControllerMap.put(DefaultsOptions.SET_SEED.getOption(), changeSeedController);
 
         defaultsController.setControllerMap(defaultsControllerMap);
 
