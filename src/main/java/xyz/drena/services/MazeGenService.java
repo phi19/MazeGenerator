@@ -41,7 +41,7 @@ public class MazeGenService {
 
         IntStream.range(1 + finalImageSaved, 1 + option + finalImageSaved).forEach(i -> {
             mazeGeneration.init();
-            mazeExport.export(mazeGeneration.getLabCells(), ExportTypes.TO_IMAGE, fileNamePrefix + i);
+            //mazeExport.export(mazeGeneration.getLabCells(), ExportTypes.TO_IMAGE, fileNamePrefix + i);
         });
     }
 
@@ -60,7 +60,7 @@ public class MazeGenService {
 
         IntStream.range(1 + finalSeedSaved, 1 + option + finalSeedSaved).forEach(i -> {
             mazeGeneration.init();
-            mazeExport.export(mazeGeneration.getLabCells(), ExportTypes.TO_SEED, fileNamePrefix + i);
+            //mazeExport.export(mazeGeneration.getLabCells(), ExportTypes.TO_SEED, fileNamePrefix + i);
         });
     }
 
@@ -79,7 +79,7 @@ public class MazeGenService {
 
         IntStream.range(1 + finalImageSaved, 1 + option + finalImageSaved).forEach(i -> {
             mazeGeneration.init();
-            mazeExport.export(mazeGeneration.getLabCells(), ExportTypes.TO_JSON, fileNamePrefix + i);
+            //mazeExport.export(mazeGeneration.getLabCells(), ExportTypes.TO_JSON, fileNamePrefix + i);
         });
     }
 }

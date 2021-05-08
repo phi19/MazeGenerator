@@ -18,6 +18,8 @@ import xyz.drena.view.menuOptions.DefaultsOptions;
 import xyz.drena.view.menuOptions.MainOptions;
 import xyz.drena.view.menus.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,6 +28,7 @@ public class Main {
     public static void main(String[] args) {
         Main main = new Main();
         main.bootStrap();
+
     }
 
     private void bootStrap() {

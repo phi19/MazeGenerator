@@ -2,6 +2,8 @@ package xyz.drena.LabGeneration.exports;
 
 import xyz.drena.LabGeneration.MazeExport;
 import xyz.drena.view.tools.Constants;
+import xyz.drena.view.tools.Messages;
+
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -20,20 +22,7 @@ public class ExportToImage extends AbstractExportable {
                 BufferedImage.TYPE_INT_RGB
         );
 
-        Graphics2D g2d = bufferedImage.createGraphics();
-
-        for (MazeExport.ExportUnits exportUnit : exportUnits) {
-
-            g2d.setColor(exportUnit.getGroundType().toJavaColor());
-            g2d.fillRect(
-                    exportUnit.getCol() * Constants.EXPORT_VIEW_UNIT_SIZE,
-                    exportUnit.getRow() * Constants.EXPORT_VIEW_UNIT_SIZE,
-                    Constants.EXPORT_VIEW_UNIT_SIZE,
-                    Constants.EXPORT_VIEW_UNIT_SIZE
-            );
-        }
-
-        g2d.dispose();
+        paintUnit(bufferedImage, exportUnits);
 
         try {
 
@@ -45,7 +34,25 @@ public class ExportToImage extends AbstractExportable {
 
         } catch (IOException ex) {
 
-            ex.printStackTrace();
+            System.out.println(Messages.SYSTEM_ERROR);
         }
+    }
+
+    private void paintUnit(BufferedImage bufferedImage, LinkedList<MazeExport.ExportUnits> exportUnits) {
+
+        Graphics2D g2d = bufferedImage.createGraphics();
+
+        for (MazeExport.ExportUnits exportUnit : exportUnits) {
+            g2d.setColor(exportUnit.getGroundType().toJavaColor());
+            g2d.fillRect(
+                    exportUnit.getCol() * Constants.EXPORT_VIEW_UNIT_SIZE,
+                    exportUnit.getRow() * Constants.EXPORT_VIEW_UNIT_SIZE,
+                    Constants.EXPORT_VIEW_UNIT_SIZE,
+                    Constants.EXPORT_VIEW_UNIT_SIZE
+            );
+        }
+
+        g2d.dispose();
+
     }
 }

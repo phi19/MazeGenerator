@@ -23,15 +23,19 @@ public class Constants {
     public static final String FILES_DEFAULTS_PATH = FILES_PATH + "defaults/";
     public static final String FILES_DEFAULTS_ROWS = "rows";
     public static final String FILES_DEFAULTS_COLUMNS = "columns";
-    public static final String FILES_DEFAULTS_SEED = "seed";
     public static final String FILES_DEFAULTS_EXTENSION = "";
 
     public static final String FILES_MAZES_IMAGES_PATH = FILES_PATH + "mazes_images/";
     public static final String EXPORT_IMAGE_EXTENSION = ".png";
 
-    public static final String FILES_MAZES_COORDINATES_PATH = FILES_PATH + "mazes_jseeds/";
     public static final String EXPORT_SEED_EXTENSION = ".seed";
+
+    public static final String EXPORT_JSON_ROW_OBJECT = "Row";
+    public static final String EXPORT_JSON_COLUMN_OBJECT = "Column";
+    public static final String EXPORT_JSON_GROUND_TYPE_OBJECT = "GroundType";
     public static final String EXPORT_JSON_EXTENSION = ".json";
+
+    public static final String FILES_MAZES_COORDINATES_PATH = FILES_PATH + "mazes/";
     public static final String EXPORT_LAB_EXTENSION = ".lab";
 
     public static final int EXPORT_VIEW_UNIT_SIZE = 60;

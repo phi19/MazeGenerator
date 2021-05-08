@@ -18,7 +18,6 @@ public class Messages {
 
     public static final String VIEW_DEFAULTS_ROWS = "Set Default Rows";
     public static final String VIEW_DEFAULTS_COLUMNS = "Set Default Columns";
-    public static final String VIEW_DEFAULTS_SEED = "Set Seed";
     public static final String VIEW_DEFAULTS_QUIT = "Go back";
 
     public static final String VIEW_SET_LENGTH_MESSAGE_PREFIX = "\nInsert how many ";
@@ -26,9 +25,6 @@ public class Messages {
     public static final String VIEW_SET_LENGTH_ROWS = "rows";
     public static final String VIEW_SET_LENGTH_COLUMNS = "columns";
     public static final String VIEW_SET_LENGTH_ERROR = "That is not a valid number! \nIt has to be a POSITIVE ODD INTEGER.";
-
-    public static final String VIEW_SET_SEED_MESSAGE = "\nInsert the seed you want to use: ";
-    public static final String VIEW_SET_SEED_ERROR = "That is not a valid seed!";
 
     public static final String VIEW_NUMBER_MAZES_MESSAGE = "\nHow many mazes do you want to generate? ";
     public static final String VIEW_NUMBER_MAZES_ERROR = "That is not a valid number!";
