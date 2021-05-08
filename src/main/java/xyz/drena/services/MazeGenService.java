@@ -17,7 +17,7 @@ public class MazeGenService {
 
     public void setMazeExport(MazeExport mazeExport) { this.mazeExport = mazeExport; }
 
-    public void generate(int option, String fileNamePrefix) {
+    public void generate(String fileNamePrefix, int option) {
 
         generateImages(option, fileNamePrefix);
 

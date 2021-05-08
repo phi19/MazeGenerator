@@ -14,7 +14,7 @@ public class GenerationView extends AbstractView {
 
     @Override
     public void show() {
-        generationController.handleValue(scanAmountMazes(), scanFileName());
+        generationController.handleValue(scanFileName(), scanAmountMazes());
     }
 
     private int scanAmountMazes() {
