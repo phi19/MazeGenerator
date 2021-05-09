@@ -32,4 +32,13 @@ public class Messages {
     public static final String VIEW_FILENAME_MESSAGE = "\nInsert the name of the file(s): ";
     public static final String VIEW_FILENAME_ERROR = "That is not a valid name!";
 
+    public static final String VIEW_EXPORT_MESSAGE = "\nTo what format do you want to export the mazes? ";
+    public static final String VIEW_EXPORT_ERROR = "That export type doesn't exist!";
+
+    public static final String VIEW_EXPORT_JSON = "JSON file";
+    public static final String VIEW_EXPORT_IMAGE = "Image file";
+    public static final String VIEW_EXPORT_LAB = "Editable file";
+    public static final String VIEW_EXPORT_SEED = "Seed number (in a file)";
+    public static final String VIEW_EXPORT_CANCEL = "Go back";
+
 }

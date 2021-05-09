@@ -7,9 +7,10 @@ import java.io.*;
 
 public class ChangeDefaultsService {
 
-    private PrintWriter printWriter;
-
     public void changeDefault(double lengthValue, String file) {
+
+        PrintWriter printWriter;
+
         try {
             printWriter = new PrintWriter(Constants.FILES_DEFAULTS_PATH + file + Constants.FILES_DEFAULTS_EXTENSION);
         } catch (FileNotFoundException exception) {

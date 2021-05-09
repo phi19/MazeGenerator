@@ -3,6 +3,7 @@ package xyz.drena.services;
 import xyz.drena.LabGeneration.MazeExport;
 import xyz.drena.LabGeneration.MazeGeneration;
 import xyz.drena.LabGeneration.exports.ExportTypes;
+import xyz.drena.LabGeneration.exports.Exportable;
 import xyz.drena.view.tools.Constants;
 import java.io.File;
 import java.util.*;
@@ -17,7 +18,7 @@ public class MazeGenService {
 
     public void setMazeExport(MazeExport mazeExport) { this.mazeExport = mazeExport; }
 
-    public void generate(String fileNamePrefix, int option) {
+    public void generate(String fileNamePrefix, int option, Exportable exportable) {
 
         generateImages(option, fileNamePrefix);
 

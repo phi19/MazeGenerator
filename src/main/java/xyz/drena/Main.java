@@ -2,6 +2,7 @@ package xyz.drena;
 
 import org.academiadecodigo.bootcamp.Prompt;
 import xyz.drena.LabGeneration.MazeExport;
+import xyz.drena.LabGeneration.exports.*;
 import xyz.drena.controllers.Controller;
 import xyz.drena.controllers.defaultChanges.ChangeColumnsController;
 import xyz.drena.controllers.defaultChanges.ChangeRowsController;
@@ -27,11 +28,12 @@ public class Main {
 
     public static void main(String[] args) {
         Main main = new Main();
-        main.bootStrap();
+        Controller mainController = main.bootStrap();
+        mainController.init();
 
     }
 
-    private void bootStrap() {
+    private Controller bootStrap() {
 
         // some initial independent properties && services
         Prompt prompt = new Prompt(System.in, System.out);
@@ -111,6 +113,15 @@ public class Main {
 
         defaultsController.setControllerMap(defaultsControllerMap);
 
-        mainController.init();
+        // setup the changeDefaultsController map
+        Map<Integer, Exportable> exportableMap = new HashMap<>();
+        exportableMap.put(ExportTypes.TO_JSON.getOption(), new ExportToJson());
+        exportableMap.put(ExportTypes.TO_IMAGE.getOption(), new ExportToImage());
+        exportableMap.put(ExportTypes.TO_LAB.getOption(), new ExportToLab());
+        exportableMap.put(ExportTypes.TO_SEED.getOption(), new ExportToSeed());
+
+        generationController.setExportTypesMap(exportableMap);
+
+        return mainController;
     }
 }
