@@ -10,21 +10,19 @@ import java.io.File;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class MazeGenService {
+public class MazeExportService {
 
     private MazeGeneration mazeGeneration;
 
     public void setMazeGeneration(MazeGeneration mazeGeneration) { this.mazeGeneration = mazeGeneration; }
 
-    public void generate(String fileNamePrefix, int mazesNumber, Exportable exportable) {
+    public void export(String fileNamePrefix, int mazesNumber, Exportable exportable) {
 
-        HashSet<GroundType> groundTypes = getGroundTypes();
-        int finalImageSaved = getFinalImage(fileNamePrefix, exportable);
-        int start = 1 + finalImageSaved;
+        int start = 1 + getFinalImage(fileNamePrefix, exportable);
 
         for (int i = start; i < start + mazesNumber; i++) {
             mazeGeneration.init();
-            export(exportable, mazeGeneration.getLabCells(), groundTypes, fileNamePrefix + i);
+            export(mazeGeneration.getLabCells(), getGroundTypes(), fileNamePrefix + i, exportable);
         }
     }
 
@@ -49,7 +47,7 @@ public class MazeGenService {
                 .orElse(0);
     }
 
-    private void export(Exportable exportable, HashMap<Cell, GroundType> cells, HashSet<GroundType> groundTypesToCollect, String fileName) {
+    private void export(HashMap<Cell, GroundType> cells, HashSet<GroundType> groundTypesToCollect, String fileName, Exportable exportable) {
 
         LinkedList<ExportUnits> exportUnits = cells.entrySet().parallelStream()
                 .filter(entry -> groundTypesToCollect.contains(entry.getValue()))

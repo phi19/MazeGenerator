@@ -11,7 +11,7 @@ import xyz.drena.controllers.menus.MainController;
 import xyz.drena.exports.*;
 import xyz.drena.services.ChangeDefaultsService;
 import xyz.drena.LabGeneration.MazeGeneration;
-import xyz.drena.services.MazeGenService;
+import xyz.drena.services.MazeExportService;
 import xyz.drena.view.changeDefaults.ChangeColumnsView;
 import xyz.drena.view.changeDefaults.ChangeRowsView;
 import xyz.drena.view.menuOptions.DefaultsOptions;
@@ -35,7 +35,7 @@ public class Main {
         // some initial independent properties && services
         Prompt prompt = new Prompt(System.in, System.out);
         ChangeDefaultsService changeDefaultsService = new ChangeDefaultsService();
-        MazeGenService mazeGenService = new MazeGenService();
+        MazeExportService mazeExportService = new MazeExportService();
         MazeGeneration mazeGeneration = new MazeGeneration();
 
         // mainVC
@@ -88,10 +88,10 @@ public class Main {
         editView.setPrompt(prompt);
         // independent properties to generationVC
         generationView.setPrompt(prompt);
-        generationController.setMazeGenService(mazeGenService);
+        generationController.setMazeGenService(mazeExportService);
 
         //independent properties to mazeGenService
-        mazeGenService.setMazeGeneration(mazeGeneration);
+        mazeExportService.setMazeGeneration(mazeGeneration);
 
         // setup the mainMenuController map
         Map<Integer, Controller> mainControllerMap = new HashMap<>();
