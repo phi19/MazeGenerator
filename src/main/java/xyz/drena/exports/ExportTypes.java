@@ -1,6 +1,5 @@
-package xyz.drena.LabGeneration.exports;
+package xyz.drena.exports;
 
-import xyz.drena.view.menuOptions.MainOptions;
 import xyz.drena.view.tools.Messages;
 
 public enum ExportTypes {

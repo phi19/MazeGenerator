@@ -1,8 +1,6 @@
 package xyz.drena;
 
 import org.academiadecodigo.bootcamp.Prompt;
-import xyz.drena.LabGeneration.MazeExport;
-import xyz.drena.LabGeneration.exports.*;
 import xyz.drena.controllers.Controller;
 import xyz.drena.controllers.defaultChanges.ChangeColumnsController;
 import xyz.drena.controllers.defaultChanges.ChangeRowsController;
@@ -10,6 +8,7 @@ import xyz.drena.controllers.menus.DefaultsController;
 import xyz.drena.controllers.menus.EditController;
 import xyz.drena.controllers.menus.GenerationController;
 import xyz.drena.controllers.menus.MainController;
+import xyz.drena.exports.*;
 import xyz.drena.services.ChangeDefaultsService;
 import xyz.drena.LabGeneration.MazeGeneration;
 import xyz.drena.services.MazeGenService;
@@ -19,8 +18,6 @@ import xyz.drena.view.menuOptions.DefaultsOptions;
 import xyz.drena.view.menuOptions.MainOptions;
 import xyz.drena.view.menus.*;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -40,7 +37,6 @@ public class Main {
         ChangeDefaultsService changeDefaultsService = new ChangeDefaultsService();
         MazeGenService mazeGenService = new MazeGenService();
         MazeGeneration mazeGeneration = new MazeGeneration();
-        MazeExport mazeExport = new MazeExport();
 
         // mainVC
         MainView mainView = new MainView();
@@ -96,7 +92,6 @@ public class Main {
 
         //independent properties to mazeGenService
         mazeGenService.setMazeGeneration(mazeGeneration);
-        mazeGenService.setMazeExport(mazeExport);
 
         // setup the mainMenuController map
         Map<Integer, Controller> mainControllerMap = new HashMap<>();
@@ -113,7 +108,7 @@ public class Main {
 
         defaultsController.setControllerMap(defaultsControllerMap);
 
-        // setup the changeDefaultsController map
+        // setup the exportTypes map
         Map<Integer, Exportable> exportableMap = new HashMap<>();
         exportableMap.put(ExportTypes.TO_JSON.getOption(), new ExportToJson());
         exportableMap.put(ExportTypes.TO_IMAGE.getOption(), new ExportToImage());

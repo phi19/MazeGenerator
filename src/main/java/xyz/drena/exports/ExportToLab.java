@@ -1,6 +1,5 @@
-package xyz.drena.LabGeneration.exports;
+package xyz.drena.exports;
 
-import xyz.drena.LabGeneration.MazeExport;
 import xyz.drena.view.tools.Constants;
 import xyz.drena.view.tools.Messages;
 
@@ -11,10 +10,10 @@ import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
-public class ExportToLab extends AbstractExportable {
+public class ExportToLab implements Exportable {
 
     @Override
-    public void export(LinkedList<MazeExport.ExportUnits> exportUnits, String fileName) {
+    public void export(LinkedList<ExportUnits> exportUnits, String fileName) {
 
         test(fileName);
     }
@@ -46,5 +45,10 @@ public class ExportToLab extends AbstractExportable {
         } catch (IOException ex) {
             System.out.println(Messages.SYSTEM_ERROR);
         }
+    }
+
+    @Override
+    public String getExportExtension() {
+        return Constants.EXPORT_LAB_EXTENSION;
     }
 }

@@ -1,6 +1,5 @@
-package xyz.drena.LabGeneration.exports;
+package xyz.drena.exports;
 
-import xyz.drena.LabGeneration.MazeExport;
 import xyz.drena.view.tools.Constants;
 import xyz.drena.view.tools.Messages;
 
@@ -11,10 +10,10 @@ import java.io.File;
 import java.io.IOException;
 import java.util.LinkedList;
 
-public class ExportToImage extends AbstractExportable {
+public class ExportToImage implements Exportable {
 
     @Override
-    public void export(LinkedList<MazeExport.ExportUnits> exportUnits, String fileName) {
+    public void export(LinkedList<ExportUnits> exportUnits, String fileName) {
 
         BufferedImage bufferedImage = new BufferedImage(
                 Constants.GENERATOR_LAB_COLUMNS*Constants.EXPORT_VIEW_UNIT_SIZE,
@@ -38,11 +37,11 @@ public class ExportToImage extends AbstractExportable {
         }
     }
 
-    private void paintUnit(BufferedImage bufferedImage, LinkedList<MazeExport.ExportUnits> exportUnits) {
+    private void paintUnit(BufferedImage bufferedImage, LinkedList<ExportUnits> exportUnits) {
 
         Graphics2D g2d = bufferedImage.createGraphics();
 
-        for (MazeExport.ExportUnits exportUnit : exportUnits) {
+        for (ExportUnits exportUnit : exportUnits) {
             g2d.setColor(exportUnit.getGroundType().toJavaColor());
             g2d.fillRect(
                     exportUnit.getCol() * Constants.EXPORT_VIEW_UNIT_SIZE,
@@ -54,5 +53,10 @@ public class ExportToImage extends AbstractExportable {
 
         g2d.dispose();
 
+    }
+
+    @Override
+    public String getExportExtension() {
+        return Constants.EXPORT_IMAGE_EXTENSION;
     }
 }

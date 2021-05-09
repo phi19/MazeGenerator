@@ -1,20 +1,24 @@
-package xyz.drena.LabGeneration.exports;
+package xyz.drena.exports;
 
-import xyz.drena.LabGeneration.MazeExport;
 import xyz.drena.view.tools.Constants;
 import java.io.*;
 import java.util.LinkedList;
 
-public class ExportToSeed extends AbstractExportable {
+public class ExportToSeed implements Exportable {
 
     @Override
-    public void export(LinkedList<MazeExport.ExportUnits> exportUnits, String fileName) {
+    public void export(LinkedList<ExportUnits> exportUnits, String fileName) {
         try {
             PrintWriter printWriter = new PrintWriter(Constants.FILES_MAZES_COORDINATES_PATH + fileName + Constants.EXPORT_SEED_EXTENSION);
             printWriter.write(Constants.RANDOMIZER_DEFAULT_SEED);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public String getExportExtension() {
+        return Constants.EXPORT_SEED_EXTENSION;
     }
 
 }

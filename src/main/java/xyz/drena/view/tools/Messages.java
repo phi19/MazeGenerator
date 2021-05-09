@@ -22,8 +22,8 @@ public class Messages {
 
     public static final String VIEW_SET_LENGTH_MESSAGE_PREFIX = "\nInsert how many ";
     public static final String VIEW_SET_LENGTH_MESSAGE_SUFFIX = " you want the maze to have: ";
-    public static final String VIEW_SET_LENGTH_ROWS = "rows";
-    public static final String VIEW_SET_LENGTH_COLUMNS = "columns";
+    public static final String VIEW_SET_LENGTH_ROWS = VIEW_SET_LENGTH_MESSAGE_PREFIX + "rows" + VIEW_SET_LENGTH_MESSAGE_SUFFIX;
+    public static final String VIEW_SET_LENGTH_COLUMNS = VIEW_SET_LENGTH_MESSAGE_PREFIX + "columns" + VIEW_SET_LENGTH_MESSAGE_SUFFIX;
     public static final String VIEW_SET_LENGTH_ERROR = "That is not a valid number! \nIt has to be a POSITIVE ODD INTEGER.";
 
     public static final String VIEW_NUMBER_MAZES_MESSAGE = "\nHow many mazes do you want to generate? ";
@@ -32,7 +32,7 @@ public class Messages {
     public static final String VIEW_FILENAME_MESSAGE = "\nInsert the name of the file(s): ";
     public static final String VIEW_FILENAME_ERROR = "That is not a valid name!";
 
-    public static final String VIEW_EXPORT_MESSAGE = "\nTo what format do you want to export the mazes? ";
+    public static final String VIEW_EXPORT_MESSAGE = "To what format do you want to export the mazes? ";
     public static final String VIEW_EXPORT_ERROR = "That export type doesn't exist!";
 
     public static final String VIEW_EXPORT_JSON = "JSON file";

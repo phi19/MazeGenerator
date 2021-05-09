@@ -11,9 +11,9 @@ public abstract class ChangeLengthView extends AbstractView {
 
     public void setChangeLengthController(ChangeLengthController changeLengthController) { this.changeLengthController = changeLengthController; }
 
-    protected void askForInput(String lengthType) {
+    protected void askForInput(String mainMessage) {
         DoubleInputScanner scanner = new DoubleInputScanner();
-        scanner.setMessage(Messages.VIEW_SET_LENGTH_MESSAGE_PREFIX + lengthType + Messages.VIEW_SET_LENGTH_MESSAGE_SUFFIX);
+        scanner.setMessage(mainMessage);
         scanner.setError(Messages.VIEW_SET_LENGTH_ERROR);
         changeLengthController.handleValue(prompt.getUserInput(scanner));
     }

@@ -1,86 +1,61 @@
 package xyz.drena.services;
 
-import xyz.drena.LabGeneration.MazeExport;
+import xyz.drena.exports.ExportUnits;
 import xyz.drena.LabGeneration.MazeGeneration;
-import xyz.drena.LabGeneration.exports.ExportTypes;
-import xyz.drena.LabGeneration.exports.Exportable;
+import xyz.drena.LabGeneration.generator.Cell;
+import xyz.drena.LabGeneration.generator.GroundType;
+import xyz.drena.exports.Exportable;
 import xyz.drena.view.tools.Constants;
 import java.io.File;
 import java.util.*;
-import java.util.stream.IntStream;
+import java.util.stream.Collectors;
 
 public class MazeGenService {
 
     private MazeGeneration mazeGeneration;
-    private MazeExport mazeExport;
 
     public void setMazeGeneration(MazeGeneration mazeGeneration) { this.mazeGeneration = mazeGeneration; }
 
-    public void setMazeExport(MazeExport mazeExport) { this.mazeExport = mazeExport; }
+    public void generate(String fileNamePrefix, int mazesNumber, Exportable exportable) {
 
-    public void generate(String fileNamePrefix, int option, Exportable exportable) {
+        HashSet<GroundType> groundTypes = getGroundTypes();
+        int finalImageSaved = getFinalImage(fileNamePrefix, exportable);
+        int start = 1 + finalImageSaved;
 
-        generateImages(option, fileNamePrefix);
-
-        generateSeeds(option, fileNamePrefix);
-
-        generateJSONs(option, fileNamePrefix);
-    }
-
-    private void generateImages(int option, String fileNamePrefix) {
-
-        new File(Constants.FILES_MAZES_IMAGES_PATH).mkdir();
-        String[] imagesFilesArray = new File(Constants.FILES_MAZES_IMAGES_PATH).list();
-
-        int finalImageSaved = Arrays.stream(imagesFilesArray)
-                .filter(file -> file.matches(fileNamePrefix + "[0-9]+" + Constants.EXPORT_IMAGE_EXTENSION))
-                .map(file -> file.replace(fileNamePrefix, ""))
-                .map(file -> file.replace(Constants.EXPORT_IMAGE_EXTENSION, ""))
-                .map(Integer::parseInt)
-                .max(Integer::compare)
-                .orElse(0);
-
-        IntStream.range(1 + finalImageSaved, 1 + option + finalImageSaved).forEach(i -> {
+        for (int i = start; i < start + mazesNumber; i++) {
             mazeGeneration.init();
-            //mazeExport.export(mazeGeneration.getLabCells(), ExportTypes.TO_IMAGE, fileNamePrefix + i);
-        });
+            export(exportable, mazeGeneration.getLabCells(), groundTypes, fileNamePrefix + i);
+        }
     }
 
-    private void generateSeeds(int option, String fileNamePrefix) {
+    private HashSet<GroundType> getGroundTypes() {
+        HashSet<GroundType> groundTypes = new HashSet<>();
+        groundTypes.add(GroundType.FLOOR);
+        groundTypes.add(GroundType.WALL);
+        return groundTypes;
+    }
+
+    private int getFinalImage(String fileNamePrefix, Exportable exportable) {
 
         new File(Constants.FILES_MAZES_COORDINATES_PATH).mkdir();
-        String[] seedsFilesArray = new File(Constants.FILES_MAZES_COORDINATES_PATH).list();
+        String[] filesArray = new File(Constants.FILES_MAZES_COORDINATES_PATH).list();
 
-        int finalSeedSaved = Arrays.stream(seedsFilesArray)
-                .filter(file -> file.matches(fileNamePrefix + "[0-9]+" + Constants.EXPORT_SEED_EXTENSION))
+        return Arrays.stream(filesArray)
+                .filter(file -> file.matches(fileNamePrefix + "[0-9]+" + exportable.getExportExtension()))
                 .map(file -> file.replace(fileNamePrefix, ""))
-                .map(file -> file.replace(Constants.EXPORT_SEED_EXTENSION, ""))
+                .map(file -> file.replace(exportable.getExportExtension(), ""))
                 .map(Integer::parseInt)
                 .max(Integer::compare)
                 .orElse(0);
-
-        IntStream.range(1 + finalSeedSaved, 1 + option + finalSeedSaved).forEach(i -> {
-            mazeGeneration.init();
-            //mazeExport.export(mazeGeneration.getLabCells(), ExportTypes.TO_SEED, fileNamePrefix + i);
-        });
     }
 
-    private void generateJSONs(int option, String fileNamePrefix) {
+    private void export(Exportable exportable, HashMap<Cell, GroundType> cells, HashSet<GroundType> groundTypesToCollect, String fileName) {
 
-        new File(Constants.FILES_MAZES_COORDINATES_PATH).mkdir();
-        String[] jsonFilesArray = new File(Constants.FILES_MAZES_COORDINATES_PATH).list();
+        LinkedList<ExportUnits> exportUnits = cells.entrySet().parallelStream()
+                .filter(entry -> groundTypesToCollect.contains(entry.getValue()))
+                .map(entry -> new ExportUnits(entry.getKey().getPosition(), entry.getValue()))
+                .collect(Collectors.toCollection(LinkedList::new));
 
-        int finalImageSaved = Arrays.stream(jsonFilesArray)
-                .filter(file -> file.matches(fileNamePrefix + "[0-9]+" + Constants.EXPORT_JSON_EXTENSION))
-                .map(file -> file.replace(fileNamePrefix, ""))
-                .map(file -> file.replace(Constants.EXPORT_JSON_EXTENSION, ""))
-                .map(Integer::parseInt)
-                .max(Integer::compare)
-                .orElse(0);
-
-        IntStream.range(1 + finalImageSaved, 1 + option + finalImageSaved).forEach(i -> {
-            mazeGeneration.init();
-            //mazeExport.export(mazeGeneration.getLabCells(), ExportTypes.TO_JSON, fileNamePrefix + i);
-        });
+        exportable.export(exportUnits, fileName);
     }
 }

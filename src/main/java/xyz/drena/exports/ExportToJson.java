@@ -1,8 +1,7 @@
-package xyz.drena.LabGeneration.exports;
+package xyz.drena.exports;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-import xyz.drena.LabGeneration.MazeExport;
 import xyz.drena.view.tools.Constants;
 import xyz.drena.view.tools.Messages;
 
@@ -10,14 +9,14 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.LinkedList;
 
-public class ExportToJson extends AbstractExportable {
+public class ExportToJson implements Exportable {
 
     @Override
-    public void export(LinkedList<MazeExport.ExportUnits> exportUnits, String fileName) {
+    public void export(LinkedList<ExportUnits> exportUnits, String fileName) {
 
         JSONArray jsonUnitsArray = new JSONArray();
 
-        for (MazeExport.ExportUnits exportUnit : exportUnits) {
+        for (ExportUnits exportUnit : exportUnits) {
             JSONObject jsonUnit = new JSONObject();
             jsonUnit.put(Constants.EXPORT_JSON_ROW_OBJECT, exportUnit.getRow());
             jsonUnit.put(Constants.EXPORT_JSON_COLUMN_OBJECT, exportUnit.getCol());
@@ -36,5 +35,10 @@ public class ExportToJson extends AbstractExportable {
         } catch (IOException e) {
             System.out.println(Messages.SYSTEM_ERROR);
         }
+    }
+
+    @Override
+    public String getExportExtension() {
+        return Constants.EXPORT_JSON_EXTENSION;
     }
 }

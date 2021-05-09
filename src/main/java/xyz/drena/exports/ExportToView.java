@@ -1,15 +1,13 @@
-package xyz.drena.LabGeneration.exports;
+package xyz.drena.exports;
 
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
-import xyz.drena.LabGeneration.MazeExport;
 import xyz.drena.view.tools.Constants;
 
 import java.util.LinkedList;
 
-public class ExportToView extends AbstractExportable {
+public class ExportToView {
 
-    @Override
-    public void export(LinkedList<MazeExport.ExportUnits> exportUnits) {
+    public void export(LinkedList<ExportUnits> exportUnits) {
 
         exportUnits.forEach(exportUnit -> {
             Rectangle rectangle = new Rectangle(

@@ -3,12 +3,10 @@ package xyz.drena.view.menus;
 import org.academiadecodigo.bootcamp.scanners.integer.IntegerInputScanner;
 import org.academiadecodigo.bootcamp.scanners.menu.MenuInputScanner;
 import org.academiadecodigo.bootcamp.scanners.string.StringInputScanner;
-import xyz.drena.LabGeneration.exports.ExportTypes;
+import xyz.drena.exports.ExportTypes;
 import xyz.drena.controllers.menus.GenerationController;
 import xyz.drena.view.AbstractView;
 import xyz.drena.view.tools.Messages;
-
-import java.util.Map;
 
 public class GenerationView extends AbstractView {
 
@@ -18,7 +16,7 @@ public class GenerationView extends AbstractView {
 
     @Override
     public void show() {
-        generationController.handleValue(scanFileName(), scanAmountMazes(), scanExportType());
+        generationController.handleInput(scanFileName(), scanAmountMazes(), scanExportType());
     }
 
     private int scanAmountMazes() {

@@ -1,7 +1,5 @@
 package xyz.drena.view.tools;
 
-import xyz.drena.LabGeneration.exports.ExportTypes;
-
 public class Constants {
 
     public static final int ALGORITHM_LAB_DEFAULT_ROWS = 14; // in a file
