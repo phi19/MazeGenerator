@@ -22,7 +22,7 @@ public class MazeExportService {
 
         for (int i = start; i < start + mazesNumber; i++) {
             mazeGeneration.init();
-            export(mazeGeneration.getLabCells(), getGroundTypes(), fileNamePrefix + i, exportable);
+            exportable.export(getExportUnits(mazeGeneration.getLabCells(), getGroundTypes()), fileNamePrefix + i);
         }
     }
 
@@ -47,13 +47,11 @@ public class MazeExportService {
                 .orElse(0);
     }
 
-    private void export(HashMap<Cell, GroundType> cells, HashSet<GroundType> groundTypesToCollect, String fileName, Exportable exportable) {
+    private LinkedList<ExportUnits> getExportUnits(HashMap<Cell, GroundType> cells, HashSet<GroundType> groundTypesToCollect) {
 
-        LinkedList<ExportUnits> exportUnits = cells.entrySet().parallelStream()
+        return cells.entrySet().parallelStream()
                 .filter(entry -> groundTypesToCollect.contains(entry.getValue()))
                 .map(entry -> new ExportUnits(entry.getKey().getPosition(), entry.getValue()))
                 .collect(Collectors.toCollection(LinkedList::new));
-
-        exportable.export(exportUnits, fileName);
     }
 }
