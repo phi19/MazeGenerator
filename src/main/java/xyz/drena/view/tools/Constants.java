@@ -1,5 +1,11 @@
 package xyz.drena.view.tools;
 
+import xyz.drena.LabGeneration.generator.GroundType;
+
+import java.io.File;
+import java.util.Arrays;
+import java.util.HashSet;
+
 public class Constants {
 
     public static final int ALGORITHM_LAB_DEFAULT_ROWS = 14; // in a file
@@ -33,8 +39,11 @@ public class Constants {
     public static final String EXPORT_JSON_GROUND_TYPE_OBJECT = "GroundType";
     public static final String EXPORT_JSON_EXTENSION = ".json";
 
-    public static final String FILES_MAZES_COORDINATES_PATH = FILES_PATH + "mazes/";
+    public static final String DIRECTORY_MAZES_EXPORT_PATH = FILES_PATH + "mazes/";
+    public static final File DIRECTORY_MAZES_EXPORT = new File(DIRECTORY_MAZES_EXPORT_PATH);
     public static final String EXPORT_LAB_EXTENSION = ".lab";
 
     public static final int EXPORT_VIEW_UNIT_SIZE = 60;
+
+    public static final HashSet<GroundType> GROUND_TYPE_HASH_SET = new HashSet<>(Arrays.asList(GroundType.FLOOR, GroundType.WALL));
 }

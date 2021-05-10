@@ -20,8 +20,8 @@ public class ExportToLab implements Exportable {
 
     private void test(String fileName) {
         List<String> srcFiles = Arrays.asList(
-                Constants.FILES_MAZES_COORDINATES_PATH + fileName + Constants.EXPORT_SEED_EXTENSION,
-                Constants.FILES_MAZES_COORDINATES_PATH + fileName + Constants.EXPORT_JSON_EXTENSION
+                Constants.DIRECTORY_MAZES_EXPORT_PATH + fileName + Constants.EXPORT_SEED_EXTENSION,
+                Constants.DIRECTORY_MAZES_EXPORT_PATH + fileName + Constants.EXPORT_JSON_EXTENSION
         );
 
         try {

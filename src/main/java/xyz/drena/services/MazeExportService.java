@@ -6,6 +6,8 @@ import xyz.drena.LabGeneration.generator.Cell;
 import xyz.drena.LabGeneration.generator.GroundType;
 import xyz.drena.exports.Exportable;
 import xyz.drena.view.tools.Constants;
+import xyz.drena.view.tools.Messages;
+
 import java.io.File;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -20,23 +22,22 @@ public class MazeExportService {
 
         int start = 1 + getFinalImage(fileNamePrefix, exportable);
 
+        if (start < 1) { return; }
+
         for (int i = start; i < start + mazesNumber; i++) {
             mazeGeneration.init();
-            exportable.export(getExportUnits(mazeGeneration.getLabCells(), getGroundTypes()), fileNamePrefix + i);
+            exportable.export(getExportUnits(mazeGeneration.getLabCells()), fileNamePrefix + i);
         }
-    }
-
-    private HashSet<GroundType> getGroundTypes() {
-        HashSet<GroundType> groundTypes = new HashSet<>();
-        groundTypes.add(GroundType.FLOOR);
-        groundTypes.add(GroundType.WALL);
-        return groundTypes;
     }
 
     private int getFinalImage(String fileNamePrefix, Exportable exportable) {
 
-        new File(Constants.FILES_MAZES_COORDINATES_PATH).mkdir();
-        String[] filesArray = new File(Constants.FILES_MAZES_COORDINATES_PATH).list();
+        String[] filesArray = doesDirectoryExist();
+
+        if (filesArray == null) {
+            System.out.println(Messages.SYSTEM_ERROR);
+            return -1;
+        }
 
         return Arrays.stream(filesArray)
                 .filter(file -> file.matches(fileNamePrefix + "[0-9]+" + exportable.getExportExtension()))
@@ -47,10 +48,20 @@ public class MazeExportService {
                 .orElse(0);
     }
 
-    private LinkedList<ExportUnits> getExportUnits(HashMap<Cell, GroundType> cells, HashSet<GroundType> groundTypesToCollect) {
+    private String[] doesDirectoryExist() {
+
+        if (!Constants.DIRECTORY_MAZES_EXPORT.exists() && !Constants.DIRECTORY_MAZES_EXPORT.mkdir()) {
+            System.out.println(Messages.SYSTEM_ERROR);
+            return null;
+        }
+
+        return Constants.DIRECTORY_MAZES_EXPORT.list();
+    }
+
+    private LinkedList<ExportUnits> getExportUnits(HashMap<Cell, GroundType> cells) {
 
         return cells.entrySet().parallelStream()
-                .filter(entry -> groundTypesToCollect.contains(entry.getValue()))
+                .filter(entry -> Constants.GROUND_TYPE_HASH_SET.contains(entry.getValue()))
                 .map(entry -> new ExportUnits(entry.getKey().getPosition(), entry.getValue()))
                 .collect(Collectors.toCollection(LinkedList::new));
     }
