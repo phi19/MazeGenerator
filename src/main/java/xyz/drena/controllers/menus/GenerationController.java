@@ -3,17 +3,17 @@ package xyz.drena.controllers.menus;
 import xyz.drena.exports.ExportTypes;
 import xyz.drena.exports.Exportable;
 import xyz.drena.controllers.AbstractController;
-import xyz.drena.services.MazeExportService;
+import xyz.drena.services.ExportService;
 import xyz.drena.view.tools.Messages;
 
 import java.util.Map;
 
 public class GenerationController extends AbstractController {
 
-    private MazeExportService mazeExportService;
+    private ExportService exportService;
     private Map<Integer, Exportable> exportableMap;
 
-    public void setMazeGenService(MazeExportService mazeExportService) { this.mazeExportService = mazeExportService; }
+    public void setMazeGenService(ExportService exportService) { this.exportService = exportService; }
 
     public void setExportTypesMap(Map<Integer, Exportable> exportableMap) { this.exportableMap = exportableMap; }
 
@@ -27,6 +27,6 @@ public class GenerationController extends AbstractController {
             throw new IllegalStateException(Messages.SYSTEM_ERROR);
         }
 
-        mazeExportService.export(fileNamePrefix, value, exportableMap.get(exportOption));
+        exportService.export(fileNamePrefix, value, exportableMap.get(exportOption));
     }
 }

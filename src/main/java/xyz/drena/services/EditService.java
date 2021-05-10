@@ -1,11 +1,12 @@
-package xyz.drena.exports;
+package xyz.drena.services;
 
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+import xyz.drena.exports.ExportUnits;
 import xyz.drena.view.tools.Constants;
 
 import java.util.LinkedList;
 
-public class ExportToView {
+public class EditService {
 
     public void export(LinkedList<ExportUnits> exportUnits) {
 

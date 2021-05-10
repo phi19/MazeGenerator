@@ -12,7 +12,7 @@ import java.io.File;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class MazeExportService {
+public class ExportService {
 
     private MazeGeneration mazeGeneration;
 
