@@ -1,12 +1,11 @@
-package xyz.drena.LabGeneration.generator;
+package xyz.drena.maze.transducer;
 
-import xyz.drena.LabGeneration.Position;
+import xyz.drena.maze.Position;
 import xyz.drena.view.tools.Constants;
-
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
-public class LabGenerator {
+public class Transducer {
 
     private LinkedHashMap<Cell, GroundType> labCells;
     private Cell currentCell;

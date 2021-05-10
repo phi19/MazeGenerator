@@ -1,11 +1,10 @@
-package xyz.drena.LabGeneration;
+package xyz.drena.maze;
 
-import xyz.drena.LabGeneration.algorithm.Block;
-import xyz.drena.LabGeneration.algorithm.LabAlgorithm;
-import xyz.drena.LabGeneration.algorithm.PseudoRandomizer;
-import xyz.drena.LabGeneration.generator.Cell;
-import xyz.drena.LabGeneration.generator.GroundType;
-import xyz.drena.LabGeneration.generator.LabGenerator;
+import xyz.drena.maze.algorithm.Block;
+import xyz.drena.maze.algorithm.Algorithm;
+import xyz.drena.maze.transducer.Cell;
+import xyz.drena.maze.transducer.GroundType;
+import xyz.drena.maze.transducer.Transducer;
 import xyz.drena.view.tools.Constants;
 
 import java.util.ArrayList;
@@ -13,22 +12,22 @@ import java.util.HashMap;
 
 public class MazeGeneration {
 
-    private final LabGenerator labGenerator;
-    private final LabAlgorithm labAlgorithm;
+    private final Transducer transducer;
+    private final Algorithm algorithm;
 
     public MazeGeneration() {
 
-        labAlgorithm = new LabAlgorithm();
-        labGenerator = new LabGenerator();
+        algorithm = new Algorithm();
+        transducer = new Transducer();
     }
 
     public void init() {
-        labAlgorithm.init();
-        labGenerator.init();
+        algorithm.init();
+        transducer.init();
 
         firstBlock();
 
-        while(labAlgorithm.hasNext()) {
+        while(algorithm.hasNext()) {
             nextBlock();
         }
     }
@@ -39,14 +38,14 @@ public class MazeGeneration {
         Block firstBlock = new Block(new Position(firstBlockRow, 0));
 
         // algorithm position
-        labAlgorithm.markAsVisited(firstBlock);
+        algorithm.markAsVisited(firstBlock);
 
         // generator position
-        labGenerator.markAsFloor(blockToCell(firstBlock));
+        transducer.markAsFloor(blockToCell(firstBlock));
     }
 
     private void nextBlock() {
-        ArrayList<Block> nextPossibleBlocks = labAlgorithm.sideBlocks();
+        ArrayList<Block> nextPossibleBlocks = algorithm.sideBlocks();
 
         if (nextPossibleBlocks.size() != 0) {
 
@@ -55,18 +54,18 @@ public class MazeGeneration {
             Block forwardBlock = nextPossibleBlocks.get(randomDirectionIndex);
 
             // algorithm position
-            labAlgorithm.markAsVisited(forwardBlock);
+            algorithm.markAsVisited(forwardBlock);
 
             // generator position
-            labGenerator.createPath(blockToCell(forwardBlock));
+            transducer.createPath(blockToCell(forwardBlock));
 
         } else {
 
             // block picker
-            Block backBlock = labAlgorithm.goBackwards();
+            Block backBlock = algorithm.goBackwards();
 
             // generator refresh position
-            labGenerator.refreshCurrentCell(blockToCell(backBlock));
+            transducer.refreshCurrentCell(blockToCell(backBlock));
         }
     }
 
@@ -74,5 +73,5 @@ public class MazeGeneration {
         return new Cell(new Position(block.getPosition().getRow()*2 + 1, block.getPosition().getCol()*2 + 1));
     }
 
-    public HashMap<Cell, GroundType> getLabCells() { return labGenerator.getLabCells(); }
+    public HashMap<Cell, GroundType> getLabCells() { return transducer.getLabCells(); }
 }

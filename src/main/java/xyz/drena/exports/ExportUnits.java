@@ -1,7 +1,7 @@
 package xyz.drena.exports;
 
-import xyz.drena.LabGeneration.Position;
-import xyz.drena.LabGeneration.generator.GroundType;
+import xyz.drena.maze.Position;
+import xyz.drena.maze.transducer.GroundType;
 
 public class ExportUnits {
     private final Position position;

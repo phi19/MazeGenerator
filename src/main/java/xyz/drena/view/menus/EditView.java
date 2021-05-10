@@ -16,6 +16,6 @@ public class EditView extends AbstractView {
     }
 
     private void showMenu() {
-        System.out.println(Messages.MAINTENANCE_ERROR);
+        editController.start();
     }
 }

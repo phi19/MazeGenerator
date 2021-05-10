@@ -15,7 +15,8 @@ public class ExportToLab implements Exportable {
     @Override
     public void export(LinkedList<ExportUnits> exportUnits, String fileName) {
 
-        test(fileName);
+        System.out.println(Messages.MAINTENANCE_ERROR);
+        //test(fileName);
     }
 
     private void test(String fileName) {

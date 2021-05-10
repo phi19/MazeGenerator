@@ -1,7 +1,6 @@
-package xyz.drena.LabGeneration.algorithm;
+package xyz.drena.maze;
 
 import xyz.drena.view.tools.Constants;
-
 import java.util.Random;
 
 public class PseudoRandomizer {

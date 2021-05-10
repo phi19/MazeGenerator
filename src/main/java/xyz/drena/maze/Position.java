@@ -1,4 +1,4 @@
-package xyz.drena.LabGeneration;
+package xyz.drena.maze;
 
 import java.util.Objects;
 
@@ -31,12 +31,5 @@ public class Position {
     @Override
     public int hashCode() {
         return Objects.hash(row, col);
-    }
-
-    @Override
-    public String toString() {
-        return "(" + row +
-                ", " + col +
-                ')';
     }
 }

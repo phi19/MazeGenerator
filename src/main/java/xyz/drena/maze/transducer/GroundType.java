@@ -1,4 +1,4 @@
-package xyz.drena.LabGeneration.generator;
+package xyz.drena.maze.transducer;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 
 public enum GroundType {

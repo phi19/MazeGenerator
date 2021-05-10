@@ -1,14 +1,14 @@
-package xyz.drena.LabGeneration.algorithm;
+package xyz.drena.maze.transducer;
 
-import xyz.drena.LabGeneration.Position;
+import xyz.drena.maze.Position;
 
 import java.util.Objects;
 
-public class Block {
+public class Cell {
 
     private final Position position;
 
-    public Block(Position position) {
+    public Cell(Position position) {
         this.position = position;
     }
 
@@ -18,8 +18,8 @@ public class Block {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Block block = (Block) o;
-        return position.equals(block.position);
+        Cell cell = (Cell) o;
+        return position.equals(cell.position);
     }
 
     @Override

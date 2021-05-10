@@ -1,12 +1,10 @@
-package xyz.drena.LabGeneration.algorithm;
+package xyz.drena.maze.algorithm;
 
-import xyz.drena.LabGeneration.Position;
+import xyz.drena.maze.Position;
 import xyz.drena.view.tools.Constants;
-
 import java.util.ArrayList;
-import java.util.LinkedList;
 
-public class LabAlgorithm {
+public class Algorithm {
 
     private ArrayList<Block> remainingBlocks;
     private ArrayList<Block> currentPath;

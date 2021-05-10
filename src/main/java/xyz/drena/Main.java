@@ -10,7 +10,8 @@ import xyz.drena.controllers.menus.GenerationController;
 import xyz.drena.controllers.menus.MainController;
 import xyz.drena.exports.*;
 import xyz.drena.services.ChangeDefaultsService;
-import xyz.drena.LabGeneration.MazeGeneration;
+import xyz.drena.maze.MazeGeneration;
+import xyz.drena.services.EditService;
 import xyz.drena.services.ExportService;
 import xyz.drena.view.changeDefaults.ChangeColumnsView;
 import xyz.drena.view.changeDefaults.ChangeRowsView;
@@ -36,6 +37,7 @@ public class Main {
         Prompt prompt = new Prompt(System.in, System.out);
         ChangeDefaultsService changeDefaultsService = new ChangeDefaultsService();
         ExportService exportService = new ExportService();
+        EditService editService = new EditService();
         MazeGeneration mazeGeneration = new MazeGeneration();
 
         // mainVC
@@ -86,6 +88,8 @@ public class Main {
         changeColumnsController.setChangeDefaultsService(changeDefaultsService);
         // independent properties to editVC
         editView.setPrompt(prompt);
+        editController.setEditService(editService);
+        editController.setMazeGeneration(mazeGeneration);
         // independent properties to generationVC
         generationView.setPrompt(prompt);
         generationController.setMazeGenService(exportService);

@@ -1,6 +1,6 @@
 package xyz.drena.view.tools;
 
-import xyz.drena.LabGeneration.generator.GroundType;
+import xyz.drena.maze.transducer.GroundType;
 
 import java.io.File;
 import java.util.Arrays;

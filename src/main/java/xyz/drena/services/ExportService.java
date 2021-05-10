@@ -1,14 +1,13 @@
 package xyz.drena.services;
 
 import xyz.drena.exports.ExportUnits;
-import xyz.drena.LabGeneration.MazeGeneration;
-import xyz.drena.LabGeneration.generator.Cell;
-import xyz.drena.LabGeneration.generator.GroundType;
+import xyz.drena.maze.MazeGeneration;
+import xyz.drena.maze.transducer.Cell;
+import xyz.drena.maze.transducer.GroundType;
 import xyz.drena.exports.Exportable;
 import xyz.drena.view.tools.Constants;
 import xyz.drena.view.tools.Messages;
 
-import java.io.File;
 import java.util.*;
 import java.util.stream.Collectors;
 
