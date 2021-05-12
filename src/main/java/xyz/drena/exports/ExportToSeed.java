@@ -4,7 +4,7 @@ import xyz.drena.view.tools.Constants;
 import java.io.*;
 import java.util.LinkedList;
 
-public class ExportToSeed implements Exportable {
+public class ExportToSeed extends AbstractExportable {
 
     @Override
     public void export(LinkedList<ExportUnits> exportUnits, String fileName) {

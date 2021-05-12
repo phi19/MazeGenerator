@@ -4,8 +4,8 @@ import xyz.drena.view.tools.Messages;
 
 public enum ExportTypes {
 
-    TO_JSON(1, Messages.VIEW_EXPORT_JSON),
-    TO_IMAGE(2, Messages.VIEW_EXPORT_IMAGE),
+    TO_IMAGE(1, Messages.VIEW_EXPORT_IMAGE),
+    TO_JSON(2, Messages.VIEW_EXPORT_JSON),
     TO_LAB(3, Messages.VIEW_EXPORT_LAB),
     TO_SEED(4, Messages.VIEW_EXPORT_SEED),
     CANCEL(5, Messages.VIEW_EXPORT_CANCEL);

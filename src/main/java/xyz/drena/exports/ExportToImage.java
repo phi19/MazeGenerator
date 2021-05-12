@@ -10,7 +10,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.LinkedList;
 
-public class ExportToImage implements Exportable {
+public class ExportToImage extends AbstractExportable {
 
     @Override
     public void export(LinkedList<ExportUnits> exportUnits, String fileName) {

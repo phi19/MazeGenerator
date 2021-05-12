@@ -5,7 +5,7 @@ import xyz.drena.view.tools.Messages;
 
 import java.util.LinkedList;
 
-public class ExportToLab implements Exportable {
+public class ExportToLab extends AbstractExportable {
 
     @Override
     public void export(LinkedList<ExportUnits> exportUnits, String fileName) {
