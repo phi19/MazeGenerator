@@ -22,6 +22,24 @@ public class Constants {
     public static final File DEFAULT_ROWS_FILE = new File(DEFAULT_ROWS_FILE_PATH);
     public static final File DEFAULT_COLUMNS_FILE = new File(DEFAULT_COLUMNS_FILE_PATH);
 
+    public static final String EXPORTS_PATH = DATA_DIRECTORY_PATH + "exports/";
+    public static final File DIRECTORY_MAZES_EXPORT = new File(EXPORTS_PATH);
+
+    public static final String EXPORT_IMAGES_PATH = EXPORTS_PATH + "images/";
+    public static final String EXPORT_IMAGE_EXTENSION = ".png";
+
+    public static final String EXPORT_SEEDS_PATH = EXPORTS_PATH + "seeds/";
+    public static final String EXPORT_SEED_EXTENSION = ".seed";
+
+    public static final String EXPORT_JSON_PATH = EXPORTS_PATH + "json/";
+    public static final String EXPORT_JSON_ROW_OBJECT = "Row";
+    public static final String EXPORT_JSON_COLUMN_OBJECT = "Column";
+    public static final String EXPORT_JSON_GROUND_TYPE_OBJECT = "GroundType";
+    public static final String EXPORT_JSON_EXTENSION = ".json";
+
+    public static final String EXPORT_MAZE_PATH = EXPORTS_PATH + "mazes/";
+    public static final String EXPORT_MAZE_EXTENSION = ".maze";
+
     public static final double ALGORITHM_LAB_DEFAULT_ROWS = 14;
     public static final double ALGORITHM_LAB_DEFAULT_COLUMNS = 11;
 
@@ -35,23 +53,6 @@ public class Constants {
     public static final int RANDOMIZER_TOTAL_SEEDS = 16000000;
     public static final int RANDOMIZER_DEFAULT_SEED = 69*69; // in a file
 
-    public static final String FILES_PATH = "src/main/resources/";
-
-    public static final String FILES_MAZES_IMAGES_PATH = FILES_PATH + "mazes_images/";
-    public static final String EXPORT_IMAGE_EXTENSION = ".png";
-
-    public static final String EXPORT_SEED_EXTENSION = ".seed";
-
-    public static final String EXPORT_JSON_ROW_OBJECT = "Row";
-    public static final String EXPORT_JSON_COLUMN_OBJECT = "Column";
-    public static final String EXPORT_JSON_GROUND_TYPE_OBJECT = "GroundType";
-    public static final String EXPORT_JSON_EXTENSION = ".json";
-
-    public static final String DIRECTORY_MAZES_EXPORT_PATH = FILES_PATH + "mazes/";
-    public static final File DIRECTORY_MAZES_EXPORT = new File(DIRECTORY_MAZES_EXPORT_PATH);
-    public static final String EXPORT_LAB_EXTENSION = ".lab";
-
     public static final int EXPORT_VIEW_UNIT_SIZE = 60;
-
     public static final HashSet<GroundType> GROUND_TYPE_HASH_SET = new HashSet<>(Arrays.asList(GroundType.FLOOR, GroundType.WALL));
 }

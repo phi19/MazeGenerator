@@ -28,7 +28,7 @@ public class ExportToJson implements Exportable {
         try {
 
             FileWriter file = new FileWriter(
-                    Constants.DIRECTORY_MAZES_EXPORT_PATH + fileName + Constants.EXPORT_JSON_EXTENSION);
+                    Constants.EXPORT_JSON_PATH + fileName + Constants.EXPORT_JSON_EXTENSION);
             file.write(jsonUnitsArray.toString());
             file.flush();
 

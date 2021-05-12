@@ -9,7 +9,7 @@ public class ExportToSeed implements Exportable {
     @Override
     public void export(LinkedList<ExportUnits> exportUnits, String fileName) {
         try {
-            PrintWriter printWriter = new PrintWriter(Constants.DIRECTORY_MAZES_EXPORT_PATH + fileName + Constants.EXPORT_SEED_EXTENSION);
+            PrintWriter printWriter = new PrintWriter(Constants.EXPORT_SEEDS_PATH + fileName + Constants.EXPORT_SEED_EXTENSION);
             printWriter.write(Constants.RANDOMIZER_DEFAULT_SEED);
         } catch (FileNotFoundException e) {
             e.printStackTrace();

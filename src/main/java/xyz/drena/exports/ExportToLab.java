@@ -3,12 +3,7 @@ package xyz.drena.exports;
 import xyz.drena.view.tools.Constants;
 import xyz.drena.view.tools.Messages;
 
-import java.io.*;
-import java.util.Arrays;
 import java.util.LinkedList;
-import java.util.List;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipOutputStream;
 
 public class ExportToLab implements Exportable {
 
@@ -18,11 +13,11 @@ public class ExportToLab implements Exportable {
         System.out.println(Messages.MAINTENANCE_ERROR);
         //test(fileName);
     }
-
+/*
     private void test(String fileName) {
         List<String> srcFiles = Arrays.asList(
-                Constants.DIRECTORY_MAZES_EXPORT_PATH + fileName + Constants.EXPORT_SEED_EXTENSION,
-                Constants.DIRECTORY_MAZES_EXPORT_PATH + fileName + Constants.EXPORT_JSON_EXTENSION
+                Constants.EXPORTS_PATH + fileName + Constants.EXPORT_SEED_EXTENSION,
+                Constants.EXPORTS_PATH + fileName + Constants.EXPORT_JSON_EXTENSION
         );
 
         try {
@@ -47,9 +42,12 @@ public class ExportToLab implements Exportable {
             System.out.println(Messages.SYSTEM_ERROR);
         }
     }
-
+*/
     @Override
     public String getExportExtension() {
-        return Constants.EXPORT_LAB_EXTENSION;
+        System.out.println(Messages.MAINTENANCE_ERROR);
+        return null;
+        //return Constants.EXPORT_MAZE_EXTENSION;
     }
+
 }
