@@ -34,13 +34,4 @@ public class ExportToJson extends AbstractExportable {
 
         return jsonUnitsArray.toString();
     }
-
-    private File getFile(String fileName) {
-        return new File(Constants.EXPORT_JSON_PATH + fileName + Constants.EXPORT_MAZE_EXTENSION);
-    }
-
-    @Override
-    public String getExportExtension() {
-        return Constants.EXPORT_JSON_EXTENSION;
-    }
 }

@@ -5,7 +5,7 @@ import xyz.drena.view.tools.Messages;
 
 import java.util.LinkedList;
 
-public class ExportToLab extends AbstractExportable {
+public class ExportToMaze extends AbstractExportable {
 
     @Override
     public void export(LinkedList<ExportUnits> exportUnits, String fileName) {
@@ -43,11 +43,4 @@ public class ExportToLab extends AbstractExportable {
         }
     }
 */
-    @Override
-    public String getExportExtension() {
-        System.out.println(Messages.MAINTENANCE_ERROR);
-        return null;
-        //return Constants.EXPORT_MAZE_EXTENSION;
-    }
-
 }

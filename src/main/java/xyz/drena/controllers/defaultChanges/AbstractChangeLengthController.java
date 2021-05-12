@@ -12,10 +12,10 @@ public abstract class AbstractChangeLengthController extends AbstractController 
 
     public void setChangeDefaultsService(PathsService pathsService) { this.pathsService = pathsService; }
 
-    protected void resolveRequest(double value, File file) {
+    protected void resolveRequest(double value, String path) {
 
         if (value % 2 == 1) {
-            if (!pathsService.writeToFile(Double.toString(value), file)) {
+            if (!pathsService.writeToFile(Double.toString(value), new File(path))) {
                 System.out.println(Messages.SYSTEM_ERROR);
             }
             return;

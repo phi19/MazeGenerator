@@ -6,6 +6,6 @@ public class ChangeColumnsController extends AbstractChangeLengthController {
 
     @Override
     public void handleValue(double value) {
-        resolveRequest(value, Constants.DEFAULT_COLUMNS_FILE);
+        resolveRequest(value, Constants.DEFAULT_COLUMNS_PATH);
     }
 }

@@ -3,31 +3,24 @@ package xyz.drena.services;
 import xyz.drena.view.tools.Constants;
 import xyz.drena.view.tools.Messages;
 
+import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.*;
-import java.util.Arrays;
-import java.util.LinkedList;
 
 public class PathsService {
 
-    public boolean canUseDataFolder() {
-        return canUseFolder(Constants.DATA_DIRECTORY);
-    }
-
-    public boolean canUseDefaultsFolder() {
-        return canUseFolder(Constants.DEFAULTS_DIRECTORY);
-    }
-
     private boolean canUseFolder(File file) {
-        return file.exists() || file.mkdir();
+        while (!(file.exists() || file.mkdir())) {
+            canUseFolder(new File(file.getParent()));
+        }
+        return true;
     }
 
     private boolean canUseFile(File file) {
         try {
-            return file.exists() || file.createNewFile();
+            return file.exists() || file.createNewFile() || canUseFolder(new File(file.getParent()));
         } catch (IOException e) {
-            System.out.println(Messages.SYSTEM_ERROR);
-            return false;
+            return canUseFolder(new File(file.getParent()));
         }
     }
 
@@ -40,6 +33,19 @@ public class PathsService {
             printWriter.flush();
             return true;
         } catch (FileNotFoundException ex) {
+            System.out.println(Messages.SYSTEM_ERROR);
+            return false;
+        }
+    }
+
+    public boolean writeToImage(BufferedImage bufferedImage, String formatName, File file) {
+        if (!canUseFile(file)) {
+            return false;
+        }
+        try {
+            ImageIO.write(bufferedImage, formatName, file);
+            return true;
+        } catch (IOException ex) {
             System.out.println(Messages.SYSTEM_ERROR);
             return false;
         }
@@ -60,6 +66,13 @@ public class PathsService {
             System.out.println(Messages.SYSTEM_ERROR);
             return null;
         }
+    }
+
+    public String[] getDirectoryList(File directory) {
+        if (!canUseFolder(directory)) {
+            return null;
+        }
+        return directory.list();
     }
 
 }

@@ -1,23 +1,27 @@
 package xyz.drena.services;
 
+import xyz.drena.exports.AbstractExportable;
 import xyz.drena.exports.ExportUnits;
 import xyz.drena.maze.MazeGeneration;
 import xyz.drena.maze.transducer.Cell;
 import xyz.drena.maze.transducer.GroundType;
-import xyz.drena.exports.Exportable;
 import xyz.drena.view.tools.Constants;
 import xyz.drena.view.tools.Messages;
 
+import java.io.File;
 import java.util.*;
 import java.util.stream.Collectors;
 
 public class ExportService {
 
+    private PathsService pathsService;
     private MazeGeneration mazeGeneration;
+
+    public void setPathsService(PathsService pathsService) { this.pathsService = pathsService; }
 
     public void setMazeGeneration(MazeGeneration mazeGeneration) { this.mazeGeneration = mazeGeneration; }
 
-    public void export(String fileNamePrefix, int mazesNumber, Exportable exportable) {
+    public void export(String fileNamePrefix, int mazesNumber, AbstractExportable exportable) {
 
         int start = 1 + getFinalImage(fileNamePrefix, exportable);
 
@@ -30,9 +34,9 @@ public class ExportService {
         }
     }
 
-    private int getFinalImage(String fileNamePrefix, Exportable exportable) {
+    private int getFinalImage(String fileNamePrefix, AbstractExportable exportable) {
 
-        String[] filesArray = doesDirectoryExist();
+        String[] filesArray = pathsService.getDirectoryList(new File(exportable.getExportType().getPath()));
 
         if (filesArray == null) {
             System.out.println(Messages.SYSTEM_ERROR);
@@ -40,22 +44,12 @@ public class ExportService {
         }
 
         return Arrays.stream(filesArray)
-                .filter(file -> file.matches(fileNamePrefix + "[0-9]+" + exportable.getExportExtension()))
+                .filter(file -> file.matches(fileNamePrefix + "[0-9]+" + exportable.getExportType().getExtension()))
                 .map(file -> file.replace(fileNamePrefix, ""))
-                .map(file -> file.replace(exportable.getExportExtension(), ""))
+                .map(file -> file.replace(exportable.getExportType().getExtension(), ""))
                 .map(Integer::parseInt)
                 .max(Integer::compare)
                 .orElse(0);
-    }
-
-    private String[] doesDirectoryExist() {
-
-        if (!Constants.DIRECTORY_MAZES_EXPORT.exists() && !Constants.DIRECTORY_MAZES_EXPORT.mkdir()) {
-            System.out.println(Messages.SYSTEM_ERROR);
-            return null;
-        }
-
-        return Constants.DIRECTORY_MAZES_EXPORT.list();
     }
 
     private LinkedList<ExportUnits> getExportUnits(HashMap<Cell, GroundType> cells) {
