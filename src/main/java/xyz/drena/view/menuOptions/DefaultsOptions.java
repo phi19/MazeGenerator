@@ -5,31 +5,19 @@ import xyz.drena.view.tools.Messages;
 
 public enum DefaultsOptions {
 
-    SET_ROWS(1, Messages.VIEW_DEFAULTS_ROWS, Constants.FILES_DEFAULTS_ROWS),
+    SET_ROWS(1, Messages.VIEW_DEFAULTS_ROWS),
 
-    SET_COLUMNS(2, Messages.VIEW_DEFAULTS_COLUMNS, Constants.FILES_DEFAULTS_COLUMNS),
+    SET_COLUMNS(2, Messages.VIEW_DEFAULTS_COLUMNS),
 
-    GO_BACK(3, Messages.VIEW_DEFAULTS_QUIT, "");
+    GO_BACK(3, Messages.VIEW_DEFAULTS_QUIT);
 
     private final int option;
     private final String menuMessage;
-    private final String file;
 
-    DefaultsOptions(int option, String menuMessage, String file) {
+    DefaultsOptions(int option, String menuMessage) {
         this.option = option;
         this.menuMessage = menuMessage;
-        this.file = file;
     }
-
-    /**
-     * Gets the user file in the defaults folder
-     *
-     * @return the option number
-     */
-    public String getFile() {
-        return file;
-    }
-
 
     /**
      * Gets the user option number
