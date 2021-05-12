@@ -3,7 +3,10 @@ package xyz.drena.services;
 import xyz.drena.view.tools.Constants;
 import xyz.drena.view.tools.Messages;
 
+import java.awt.image.BufferedImage;
 import java.io.*;
+import java.util.Arrays;
+import java.util.LinkedList;
 
 public class PathsService {
 
@@ -39,6 +42,23 @@ public class PathsService {
         } catch (FileNotFoundException ex) {
             System.out.println(Messages.SYSTEM_ERROR);
             return false;
+        }
+    }
+
+    public String readFromFile(File file) {
+        if (!canUseFile(file)) {
+            return null;
+        }
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file)))) {
+            StringBuilder fileData = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                fileData.append(line).append("\n");
+            }
+            return fileData.toString();
+        } catch (IOException ex) {
+            System.out.println(Messages.SYSTEM_ERROR);
+            return null;
         }
     }
 

@@ -14,5 +14,7 @@ public class Setup {
         if (!pathsService.canUseDataFolder() || !pathsService.canUseDefaultsFolder()) {
             System.out.println(Messages.SYSTEM_ERROR);
         }
+
+        System.out.println(Double.parseDouble(pathsService.readFromFile(Constants.DEFAULT_ROWS_FILE)));
     }
 }
