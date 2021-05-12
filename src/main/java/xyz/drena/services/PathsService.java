@@ -2,54 +2,38 @@ package xyz.drena.services;
 
 import xyz.drena.view.tools.Constants;
 import xyz.drena.view.tools.Messages;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.PrintWriter;
+
+import java.io.*;
 
 public class PathsService {
 
     public boolean canUseDataFolder() {
-        return Constants.DATA_DIRECTORY.exists() || Constants.DATA_DIRECTORY.mkdir();
+        return canUseFolder(Constants.DATA_DIRECTORY);
     }
 
     public boolean canUseDefaultsFolder() {
-        return Constants.DEFAULTS_DIRECTORY.exists() || Constants.DEFAULTS_DIRECTORY.mkdir();
+        return canUseFolder(Constants.DEFAULTS_DIRECTORY);
     }
 
-    public boolean canUseRowsFile() {
+    private boolean canUseFolder(File file) {
+        return file.exists() || file.mkdir();
+    }
+
+    private boolean canUseFile(File file) {
         try {
-            return Constants.DEFAULT_ROWS_FILE.exists() || Constants.DEFAULT_ROWS_FILE.createNewFile();
+            return file.exists() || file.createNewFile();
         } catch (IOException e) {
+            System.out.println(Messages.SYSTEM_ERROR);
             return false;
         }
     }
 
-    public boolean canUseColumnsFile() {
-        try {
-            return Constants.DEFAULT_COLUMNS_FILE.exists() || Constants.DEFAULT_COLUMNS_FILE.createNewFile();
-        } catch (IOException e) {
+    public boolean writeToFile(String text, File file) {
+        if (!canUseFile(file)) {
             return false;
         }
-    }
-
-    public boolean setDefaultRows(double value) {
-        if (!canUseRowsFile()) {
-            return false;
-        }
-        return setDefaultLength(value, Constants.DEFAULT_ROWS_FILE);
-    }
-
-    public boolean setDefaultColumns(double value) {
-        if (!canUseColumnsFile()) {
-            return false;
-        }
-        return setDefaultLength(value, Constants.DEFAULT_COLUMNS_FILE);
-    }
-
-    private boolean setDefaultLength(double value, File file) {
         try (PrintWriter printWriter = new PrintWriter(file)) {
-            printWriter.write(Double.toString(value));
+            printWriter.write(text);
             printWriter.flush();
             return true;
         } catch (FileNotFoundException ex) {
@@ -57,4 +41,5 @@ public class PathsService {
             return false;
         }
     }
+
 }

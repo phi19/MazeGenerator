@@ -38,11 +38,6 @@ public class Constants {
 
     public static final String FILES_PATH = "src/main/resources/";
 
-    public static final String FILES_DEFAULTS_PATH = FILES_PATH + "defaults/";
-    public static final String FILES_DEFAULTS_EXTENSION = "";
-    public static final String FILES_DEFAULTS_ROWS = FILES_DEFAULTS_PATH + "rows" + FILES_DEFAULTS_EXTENSION;
-    public static final String FILES_DEFAULTS_COLUMNS = FILES_DEFAULTS_PATH + "columns" + FILES_DEFAULTS_EXTENSION;
-
     public static final String FILES_MAZES_IMAGES_PATH = FILES_PATH + "mazes_images/";
     public static final String EXPORT_IMAGE_EXTENSION = ".png";
 

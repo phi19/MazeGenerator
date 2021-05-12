@@ -9,7 +9,7 @@ import xyz.drena.controllers.menus.EditController;
 import xyz.drena.controllers.menus.GenerationController;
 import xyz.drena.controllers.menus.MainController;
 import xyz.drena.exports.*;
-import xyz.drena.services.ChangeDefaultsService;
+import xyz.drena.services.PathsService;
 import xyz.drena.maze.MazeGeneration;
 import xyz.drena.services.EditService;
 import xyz.drena.services.ExportService;
@@ -35,7 +35,7 @@ public class Main {
 
         // some initial independent properties && services
         Prompt prompt = new Prompt(System.in, System.out);
-        ChangeDefaultsService changeDefaultsService = new ChangeDefaultsService();
+        PathsService pathsService = new PathsService();
         ExportService exportService = new ExportService();
         EditService editService = new EditService();
         MazeGeneration mazeGeneration = new MazeGeneration();
@@ -82,10 +82,10 @@ public class Main {
         defaultsMenuView.setPrompt(prompt);
         // independent properties to changeRowsVC
         changeRowsView.setPrompt(prompt);
-        changeRowsController.setChangeDefaultsService(changeDefaultsService);
+        changeRowsController.setChangeDefaultsService(pathsService);
         // independent properties to changeColumnsVC
         changeColumnsView.setPrompt(prompt);
-        changeColumnsController.setChangeDefaultsService(changeDefaultsService);
+        changeColumnsController.setChangeDefaultsService(pathsService);
         // independent properties to editVC
         editView.setPrompt(prompt);
         editController.setEditService(editService);
