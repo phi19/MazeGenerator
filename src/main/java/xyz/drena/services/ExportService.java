@@ -24,7 +24,8 @@ public class ExportService {
         if (start < 1) { return; }
 
         for (int i = start; i < start + mazesNumber; i++) {
-            mazeGeneration.init();
+            // me has to change
+            mazeGeneration.init((int) Constants.ALGORITHM_LAB_DEFAULT_ROWS, (int) Constants.ALGORITHM_LAB_DEFAULT_COLUMNS);
             exportable.export(getExportUnits(mazeGeneration.getLabCells()), fileNamePrefix + i);
         }
     }

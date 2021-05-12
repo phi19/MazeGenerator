@@ -89,13 +89,15 @@ public class Main {
         // independent properties to editVC
         editView.setPrompt(prompt);
         editController.setEditService(editService);
-        editController.setMazeGeneration(mazeGeneration);
         // independent properties to generationVC
         generationView.setPrompt(prompt);
         generationController.setMazeGenService(exportService);
 
         //independent properties to mazeGenService
         exportService.setMazeGeneration(mazeGeneration);
+
+        //independent properties to editService
+        editService.setMazeGeneration(mazeGeneration);
 
         // setup the mainMenuController map
         Map<Integer, Controller> mainControllerMap = new HashMap<>();

@@ -34,7 +34,6 @@ public class Constants {
 
     public static final int RANDOMIZER_TOTAL_SEEDS = 16000000;
     public static final int RANDOMIZER_DEFAULT_SEED = 69*69; // in a file
-    public static final boolean RANDOMIZER_USE_DEFAULT_SEED = true;
 
     public static final String FILES_PATH = "src/main/resources/";
 

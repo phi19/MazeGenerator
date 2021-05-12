@@ -14,27 +14,40 @@ public class MazeGeneration {
 
     private final Transducer transducer;
     private final Algorithm algorithm;
+    private final PseudoRandomizer pseudoRandomizer;
 
     public MazeGeneration() {
 
         algorithm = new Algorithm();
         transducer = new Transducer();
+        pseudoRandomizer = new PseudoRandomizer();
     }
 
-    public void init() {
-        algorithm.init();
-        transducer.init();
+    public void init(int rows, int columns) {
+        pseudoRandomizer.generateRandomSeed();
+        startFlow(rows, columns);
+    }
 
-        firstBlock();
+    public void init(int rows, int columns, long seed) {
+        pseudoRandomizer.setSeed(seed);
+        startFlow(rows, columns);
+    }
+
+    private void startFlow(int rows, int columns) {
+
+        algorithm.init(rows, columns);
+        transducer.init(rows*2+1, columns*2+1);
+
+        firstBlock(rows);
 
         while(algorithm.hasNext()) {
             nextBlock();
         }
     }
 
-    private void firstBlock() {
+    private void firstBlock(int rows) {
         // randomizer
-        int firstBlockRow = (int) PseudoRandomizer.random(Constants.ALGORITHM_LAB_DEFAULT_ROWS);
+        int firstBlockRow = pseudoRandomizer.random(rows).intValue();
         Block firstBlock = new Block(new Position(firstBlockRow, 0));
 
         // algorithm position
@@ -50,7 +63,7 @@ public class MazeGeneration {
         if (nextPossibleBlocks.size() != 0) {
 
             // randomizer
-            int randomDirectionIndex = (int) PseudoRandomizer.random(nextPossibleBlocks.size());
+            int randomDirectionIndex = pseudoRandomizer.random(nextPossibleBlocks.size()).intValue();
             Block forwardBlock = nextPossibleBlocks.get(randomDirectionIndex);
 
             // algorithm position
