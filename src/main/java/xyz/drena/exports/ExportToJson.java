@@ -2,18 +2,25 @@ package xyz.drena.exports;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import xyz.drena.services.PathsService;
 import xyz.drena.view.tools.Constants;
 import xyz.drena.view.tools.Messages;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.LinkedList;
 
-public class ExportToJson implements Exportable {
+public class ExportToJson extends AbstractExportable {
 
     @Override
     public void export(LinkedList<ExportUnits> exportUnits, String fileName) {
 
+        pathsService.writeToFile(getUnits(exportUnits), getFile(fileName));
+    }
+
+    private String getUnits(LinkedList<ExportUnits> exportUnits) {
         JSONArray jsonUnitsArray = new JSONArray();
 
         for (ExportUnits exportUnit : exportUnits) {
@@ -25,16 +32,11 @@ public class ExportToJson implements Exportable {
             jsonUnitsArray.put(jsonUnit);
         }
 
-        try {
+        return jsonUnitsArray.toString();
+    }
 
-            FileWriter file = new FileWriter(
-                    Constants.EXPORT_JSON_PATH + fileName + Constants.EXPORT_JSON_EXTENSION);
-            file.write(jsonUnitsArray.toString());
-            file.flush();
-
-        } catch (IOException e) {
-            System.out.println(Messages.SYSTEM_ERROR);
-        }
+    private File getFile(String fileName) {
+        return new File(Constants.EXPORT_JSON_PATH + fileName + Constants.EXPORT_MAZE_EXTENSION);
     }
 
     @Override
