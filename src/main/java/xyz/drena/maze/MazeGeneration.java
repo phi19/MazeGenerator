@@ -34,7 +34,7 @@ public class MazeGeneration {
 
     private void firstBlock() {
         // randomizer
-        int firstBlockRow = PseudoRandomizer.random(Constants.ALGORITHM_LAB_DEFAULT_ROWS);
+        int firstBlockRow = (int) PseudoRandomizer.random(Constants.ALGORITHM_LAB_DEFAULT_ROWS);
         Block firstBlock = new Block(new Position(firstBlockRow, 0));
 
         // algorithm position
@@ -50,7 +50,7 @@ public class MazeGeneration {
         if (nextPossibleBlocks.size() != 0) {
 
             // randomizer
-            int randomDirectionIndex = PseudoRandomizer.random(nextPossibleBlocks.size());
+            int randomDirectionIndex = (int) PseudoRandomizer.random(nextPossibleBlocks.size());
             Block forwardBlock = nextPossibleBlocks.get(randomDirectionIndex);
 
             // algorithm position

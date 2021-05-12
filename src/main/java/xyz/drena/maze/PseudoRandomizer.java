@@ -12,8 +12,8 @@ public class PseudoRandomizer {
         return (long) (Math.random()*Constants.RANDOMIZER_TOTAL_SEEDS);
     }
 
-    public static int random(int total) {
-        return (int) Math.floor(SEED_GENERATION.nextDouble() * total);
+    public static double random(double total) {
+        return Math.floor(SEED_GENERATION.nextDouble() * total);
     }
 
 }

@@ -7,12 +7,12 @@ import java.io.*;
 
 public class ChangeDefaultsService {
 
-    public void changeDefault(double lengthValue, String file) {
+    public void changeDefault(double lengthValue, String fileName) {
 
         PrintWriter printWriter;
 
         try {
-            printWriter = new PrintWriter(Constants.FILES_DEFAULTS_PATH + file + Constants.FILES_DEFAULTS_EXTENSION);
+            printWriter = new PrintWriter(fileName);
         } catch (FileNotFoundException exception) {
             System.out.println(Messages.SYSTEM_ERROR);
             return;

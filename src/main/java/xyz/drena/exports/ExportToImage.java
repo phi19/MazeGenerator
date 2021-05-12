@@ -16,8 +16,8 @@ public class ExportToImage implements Exportable {
     public void export(LinkedList<ExportUnits> exportUnits, String fileName) {
 
         BufferedImage bufferedImage = new BufferedImage(
-                Constants.GENERATOR_LAB_COLUMNS*Constants.EXPORT_VIEW_UNIT_SIZE,
-                Constants.GENERATOR_LAB_ROWS*Constants.EXPORT_VIEW_UNIT_SIZE,
+                (int) Constants.GENERATOR_LAB_COLUMNS*Constants.EXPORT_VIEW_UNIT_SIZE,
+                (int) Constants.GENERATOR_LAB_ROWS*Constants.EXPORT_VIEW_UNIT_SIZE,
                 BufferedImage.TYPE_INT_RGB
         );
 

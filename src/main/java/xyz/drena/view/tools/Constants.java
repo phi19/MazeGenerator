@@ -8,11 +8,25 @@ import java.util.HashSet;
 
 public class Constants {
 
-    public static final int ALGORITHM_LAB_DEFAULT_ROWS = 14; // in a file
-    public static final int ALGORITHM_LAB_DEFAULT_COLUMNS = 11; // in a file
+    private static final String APPDATA_PATH = System.getProperty("user.home") + "/AppData/Roaming/";
 
-    public static final int GENERATOR_LAB_ROWS = ALGORITHM_LAB_DEFAULT_ROWS * 2 + 1;
-    public static final int GENERATOR_LAB_COLUMNS = ALGORITHM_LAB_DEFAULT_COLUMNS * 2 + 1;
+    private static final String DATA_DIRECTORY_PATH = APPDATA_PATH + "MazeGenerator/";
+    public static final File DATA_DIRECTORY = new File(DATA_DIRECTORY_PATH);
+
+    private static final String DEFAULTS_DIRECTORY_PATH = DATA_DIRECTORY_PATH + "defaults/";
+    public static final File DEFAULTS_DIRECTORY = new File(DEFAULTS_DIRECTORY_PATH);
+
+    private static final String DEFAULTS_EXTENSION = "";
+    private static final String DEFAULT_ROWS_FILE_PATH = DEFAULTS_DIRECTORY_PATH + "rows" + DEFAULTS_EXTENSION;
+    private static final String DEFAULT_COLUMNS_FILE_PATH = DEFAULTS_DIRECTORY_PATH + "columns" + DEFAULTS_EXTENSION;
+    public static final File DEFAULT_ROWS_FILE = new File(DEFAULT_ROWS_FILE_PATH);
+    public static final File DEFAULT_COLUMNS_FILE = new File(DEFAULT_COLUMNS_FILE_PATH);
+
+    public static final double ALGORITHM_LAB_DEFAULT_ROWS = 14;
+    public static final double ALGORITHM_LAB_DEFAULT_COLUMNS = 11;
+
+    public static final double GENERATOR_LAB_ROWS = ALGORITHM_LAB_DEFAULT_ROWS * 2 + 1;
+    public static final double GENERATOR_LAB_COLUMNS = ALGORITHM_LAB_DEFAULT_COLUMNS * 2 + 1;
 
     public static final int VIEWER_DEFAULT_UNIT_SIZE = 25;
     public static final int VIEWER_PADDING = 10;
@@ -25,9 +39,9 @@ public class Constants {
     public static final String FILES_PATH = "src/main/resources/";
 
     public static final String FILES_DEFAULTS_PATH = FILES_PATH + "defaults/";
-    public static final String FILES_DEFAULTS_ROWS = "rows";
-    public static final String FILES_DEFAULTS_COLUMNS = "columns";
     public static final String FILES_DEFAULTS_EXTENSION = "";
+    public static final String FILES_DEFAULTS_ROWS = FILES_DEFAULTS_PATH + "rows" + FILES_DEFAULTS_EXTENSION;
+    public static final String FILES_DEFAULTS_COLUMNS = FILES_DEFAULTS_PATH + "columns" + FILES_DEFAULTS_EXTENSION;
 
     public static final String FILES_MAZES_IMAGES_PATH = FILES_PATH + "mazes_images/";
     public static final String EXPORT_IMAGE_EXTENSION = ".png";

@@ -24,7 +24,7 @@ public class EditService {
 
     private int getViewerUnitSize() {
         if (Constants.VIEWER_DEFAULT_UNIT_SIZE * Constants.GENERATOR_LAB_ROWS > Constants.VIEWER_MAXIMUM_HEIGHT) {
-            return Constants.VIEWER_MAXIMUM_HEIGHT / Constants.GENERATOR_LAB_ROWS;
+            return (int) (Constants.VIEWER_MAXIMUM_HEIGHT / Constants.GENERATOR_LAB_ROWS);
         } else {
             return Constants.VIEWER_DEFAULT_UNIT_SIZE;
         }
