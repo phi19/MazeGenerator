@@ -2,10 +2,12 @@ package xyz.drena.controllers.defaultChanges;
 
 import xyz.drena.view.tools.Constants;
 
+import java.io.File;
+
 public class ChangeRowsController extends AbstractChangeLengthController {
 
     @Override
     public void handleValue(double value) {
-        resolveRequest(value, Constants.FILES_DEFAULTS_ROWS);
+        resolveRequest(value, Constants.DEFAULT_ROWS_PATH);
     }
 }

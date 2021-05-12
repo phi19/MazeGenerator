@@ -1,19 +1,23 @@
 package xyz.drena.controllers.defaultChanges;
 
 import xyz.drena.controllers.AbstractController;
-import xyz.drena.services.ChangeDefaultsService;
+import xyz.drena.services.PathsService;
 import xyz.drena.view.tools.Messages;
+
+import java.io.File;
 
 public abstract class AbstractChangeLengthController extends AbstractController implements ChangeLengthController {
 
-    private ChangeDefaultsService changeDefaultsService;
+    private PathsService pathsService;
 
-    public void setChangeDefaultsService(ChangeDefaultsService changeDefaultsService) { this.changeDefaultsService = changeDefaultsService; }
+    public void setChangeDefaultsService(PathsService pathsService) { this.pathsService = pathsService; }
 
-    protected void resolveRequest(double value, String fileName) {
+    protected void resolveRequest(double value, String path) {
 
         if (value % 2 == 1) {
-            changeDefaultsService.changeDefault(value, fileName);
+            if (!pathsService.writeToFile(Double.toString(value), new File(path))) {
+                System.out.println(Messages.SYSTEM_ERROR);
+            }
             return;
         }
 

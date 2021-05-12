@@ -2,54 +2,34 @@ package xyz.drena.services;
 
 import xyz.drena.view.tools.Constants;
 import xyz.drena.view.tools.Messages;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.PrintWriter;
+
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.*;
 
 public class PathsService {
 
-    public boolean canUseDataFolder() {
-        return Constants.DATA_DIRECTORY.exists() || Constants.DATA_DIRECTORY.mkdir();
+    private boolean canUseFolder(File file) {
+        while (!(file.exists() || file.mkdir())) {
+            canUseFolder(new File(file.getParent()));
+        }
+        return true;
     }
 
-    public boolean canUseDefaultsFolder() {
-        return Constants.DEFAULTS_DIRECTORY.exists() || Constants.DEFAULTS_DIRECTORY.mkdir();
-    }
-
-    public boolean canUseRowsFile() {
+    private boolean canUseFile(File file) {
         try {
-            return Constants.DEFAULT_ROWS_FILE.exists() || Constants.DEFAULT_ROWS_FILE.createNewFile();
+            return file.exists() || file.createNewFile() || canUseFolder(new File(file.getParent()));
         } catch (IOException e) {
-            return false;
+            return canUseFolder(new File(file.getParent()));
         }
     }
 
-    public boolean canUseColumnsFile() {
-        try {
-            return Constants.DEFAULT_COLUMNS_FILE.exists() || Constants.DEFAULT_COLUMNS_FILE.createNewFile();
-        } catch (IOException e) {
+    public boolean writeToFile(String text, File file) {
+        if (!canUseFile(file)) {
             return false;
         }
-    }
-
-    public boolean setDefaultRows(double value) {
-        if (!canUseRowsFile()) {
-            return false;
-        }
-        return setDefaultLength(value, Constants.DEFAULT_ROWS_FILE);
-    }
-
-    public boolean setDefaultColumns(double value) {
-        if (!canUseColumnsFile()) {
-            return false;
-        }
-        return setDefaultLength(value, Constants.DEFAULT_COLUMNS_FILE);
-    }
-
-    private boolean setDefaultLength(double value, File file) {
         try (PrintWriter printWriter = new PrintWriter(file)) {
-            printWriter.write(Double.toString(value));
+            printWriter.write(text);
             printWriter.flush();
             return true;
         } catch (FileNotFoundException ex) {
@@ -57,4 +37,42 @@ public class PathsService {
             return false;
         }
     }
+
+    public boolean writeToImage(BufferedImage bufferedImage, String formatName, File file) {
+        if (!canUseFile(file)) {
+            return false;
+        }
+        try {
+            ImageIO.write(bufferedImage, formatName, file);
+            return true;
+        } catch (IOException ex) {
+            System.out.println(Messages.SYSTEM_ERROR);
+            return false;
+        }
+    }
+
+    public String readFromFile(File file) {
+        if (!canUseFile(file)) {
+            return null;
+        }
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file)))) {
+            StringBuilder fileData = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                fileData.append(line).append("\n");
+            }
+            return fileData.toString();
+        } catch (IOException ex) {
+            System.out.println(Messages.SYSTEM_ERROR);
+            return null;
+        }
+    }
+
+    public String[] getDirectoryList(File directory) {
+        if (!canUseFolder(directory)) {
+            return null;
+        }
+        return directory.list();
+    }
+
 }

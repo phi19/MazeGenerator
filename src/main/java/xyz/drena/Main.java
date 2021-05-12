@@ -9,7 +9,7 @@ import xyz.drena.controllers.menus.EditController;
 import xyz.drena.controllers.menus.GenerationController;
 import xyz.drena.controllers.menus.MainController;
 import xyz.drena.exports.*;
-import xyz.drena.services.ChangeDefaultsService;
+import xyz.drena.services.PathsService;
 import xyz.drena.maze.MazeGeneration;
 import xyz.drena.services.EditService;
 import xyz.drena.services.ExportService;
@@ -35,10 +35,14 @@ public class Main {
 
         // some initial independent properties && services
         Prompt prompt = new Prompt(System.in, System.out);
-        ChangeDefaultsService changeDefaultsService = new ChangeDefaultsService();
+        MazeGeneration mazeGeneration = new MazeGeneration();
+        PathsService pathsService = new PathsService();
         ExportService exportService = new ExportService();
         EditService editService = new EditService();
-        MazeGeneration mazeGeneration = new MazeGeneration();
+        AbstractExportable exportToImage = new ExportToImage();
+        AbstractExportable exportToJson = new ExportToJson();
+        AbstractExportable exportToMaze = new ExportToMaze();
+        AbstractExportable exportToSeed = new ExportToSeed();
 
         // mainVC
         MainView mainView = new MainView();
@@ -82,20 +86,39 @@ public class Main {
         defaultsMenuView.setPrompt(prompt);
         // independent properties to changeRowsVC
         changeRowsView.setPrompt(prompt);
-        changeRowsController.setChangeDefaultsService(changeDefaultsService);
+        changeRowsController.setChangeDefaultsService(pathsService);
         // independent properties to changeColumnsVC
         changeColumnsView.setPrompt(prompt);
-        changeColumnsController.setChangeDefaultsService(changeDefaultsService);
+        changeColumnsController.setChangeDefaultsService(pathsService);
         // independent properties to editVC
         editView.setPrompt(prompt);
         editController.setEditService(editService);
-        editController.setMazeGeneration(mazeGeneration);
         // independent properties to generationVC
         generationView.setPrompt(prompt);
         generationController.setMazeGenService(exportService);
 
         //independent properties to mazeGenService
+        exportService.setPathsService(pathsService);
         exportService.setMazeGeneration(mazeGeneration);
+
+        //independent properties to editService
+        editService.setMazeGeneration(mazeGeneration);
+
+        //independent properties to exportToImage
+        exportToImage.setPathsService(pathsService);
+        exportToImage.setExportType(ExportTypes.TO_IMAGE);
+
+        //independent properties to exportToJson
+        exportToJson.setPathsService(pathsService);
+        exportToJson.setExportType(ExportTypes.TO_JSON);
+
+        //independent properties to exportToMaze
+        exportToMaze.setPathsService(pathsService);
+        exportToMaze.setExportType(ExportTypes.TO_MAZE);
+
+        //independent properties to exportToSeed
+        exportToSeed.setPathsService(pathsService);
+        exportToSeed.setExportType(ExportTypes.TO_SEED);
 
         // setup the mainMenuController map
         Map<Integer, Controller> mainControllerMap = new HashMap<>();
@@ -113,11 +136,11 @@ public class Main {
         defaultsController.setControllerMap(defaultsControllerMap);
 
         // setup the exportTypes map
-        Map<Integer, Exportable> exportableMap = new HashMap<>();
-        exportableMap.put(ExportTypes.TO_JSON.getOption(), new ExportToJson());
-        exportableMap.put(ExportTypes.TO_IMAGE.getOption(), new ExportToImage());
-        exportableMap.put(ExportTypes.TO_LAB.getOption(), new ExportToLab());
-        exportableMap.put(ExportTypes.TO_SEED.getOption(), new ExportToSeed());
+        Map<Integer, AbstractExportable> exportableMap = new HashMap<>();
+        exportableMap.put(ExportTypes.TO_IMAGE.getOption(), exportToImage);
+        exportableMap.put(ExportTypes.TO_JSON.getOption(), exportToJson);
+        exportableMap.put(ExportTypes.TO_MAZE.getOption(), exportToMaze);
+        exportableMap.put(ExportTypes.TO_SEED.getOption(), exportToSeed);
 
         generationController.setExportTypesMap(exportableMap);
 

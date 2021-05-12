@@ -1,5 +1,6 @@
 package xyz.drena.controllers.menus;
 
+import xyz.drena.exports.AbstractExportable;
 import xyz.drena.exports.ExportTypes;
 import xyz.drena.exports.Exportable;
 import xyz.drena.controllers.AbstractController;
@@ -11,11 +12,11 @@ import java.util.Map;
 public class GenerationController extends AbstractController {
 
     private ExportService exportService;
-    private Map<Integer, Exportable> exportableMap;
+    private Map<Integer, AbstractExportable> exportableMap;
 
     public void setMazeGenService(ExportService exportService) { this.exportService = exportService; }
 
-    public void setExportTypesMap(Map<Integer, Exportable> exportableMap) { this.exportableMap = exportableMap; }
+    public void setExportTypesMap(Map<Integer, AbstractExportable> exportableMap) { this.exportableMap = exportableMap; }
 
     public void handleInput(String fileNamePrefix, int value, int exportOption) {
 

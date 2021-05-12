@@ -10,18 +10,18 @@ public class Algorithm {
     private ArrayList<Block> currentPath;
     private Block currentBlock;
 
-    public void init() {
-        populateBlocks();
+    public void init(int rows, int columns) {
+        populateBlocks(rows, columns);
         currentPath = new ArrayList<>();
         currentBlock = null;
     }
 
-    private void populateBlocks() {
+    private void populateBlocks(int rows, int columns) {
         remainingBlocks = new ArrayList<>();
 
-        for (int y = 0; y < Constants.ALGORITHM_LAB_DEFAULT_ROWS; y++) {
+        for (int y = 0; y < rows; y++) {
 
-            for (int x = 0; x < Constants.ALGORITHM_LAB_DEFAULT_COLUMNS; x++) {
+            for (int x = 0; x < columns; x++) {
 
                 remainingBlocks.add(new Block(new Position(y, x)));
             }

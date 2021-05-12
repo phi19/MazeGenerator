@@ -12,17 +12,17 @@ public class Transducer {
 
     public void refreshCurrentCell(Cell currentCell) { this.currentCell = currentCell; }
 
-    public void init() {
-        populateLabCells();
+    public void init(int rows, int columns) {
+        populateLabCells(rows, columns);
         currentCell = null;
     }
 
-    private void populateLabCells() {
+    private void populateLabCells(int rows, int columns) {
         labCells = new LinkedHashMap<>();
 
-        for (int y = 0; y < Constants.GENERATOR_LAB_ROWS; y++) {
+        for (int y = 0; y < rows; y++) {
 
-            for (int x = 0; x < Constants.GENERATOR_LAB_COLUMNS; x++) {
+            for (int x = 0; x < columns; x++) {
 
                 labCells.put(new Cell(new Position(y, x)), GroundType.WALL);
             }
