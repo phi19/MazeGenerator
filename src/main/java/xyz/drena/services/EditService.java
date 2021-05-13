@@ -1,7 +1,7 @@
 package xyz.drena.services;
 
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
-import xyz.drena.exports.ExportUnits;
+import xyz.drena.exports.utils.ExportUnits;
 import xyz.drena.maze.MazeGeneration;
 import xyz.drena.maze.transducer.Cell;
 import xyz.drena.maze.transducer.GroundType;
@@ -19,7 +19,7 @@ public class EditService {
 
     public void init() {
         // for now, this is a "generate a random lab and edit it"
-        mazeGeneration.init((int) Constants.ALGORITHM_LAB_DEFAULT_ROWS, (int) Constants.ALGORITHM_LAB_DEFAULT_COLUMNS);
+        mazeGeneration.init(Constants.ALGORITHM_LAB_DEFAULT_ROWS, Constants.ALGORITHM_LAB_DEFAULT_COLUMNS);
         view(getExportUnits(mazeGeneration.getLabCells()));
 
     }
@@ -48,7 +48,7 @@ public class EditService {
 
     private int getViewerUnitSize() {
         if (Constants.VIEWER_DEFAULT_UNIT_SIZE * Constants.GENERATOR_LAB_ROWS > Constants.VIEWER_MAXIMUM_HEIGHT) {
-            return (int) (Constants.VIEWER_MAXIMUM_HEIGHT / Constants.GENERATOR_LAB_ROWS);
+            return (Constants.VIEWER_MAXIMUM_HEIGHT / Constants.GENERATOR_LAB_ROWS);
         } else {
             return Constants.VIEWER_DEFAULT_UNIT_SIZE;
         }

@@ -1,13 +1,10 @@
-package xyz.drena.exports;
+package xyz.drena.exports.exportables;
 
+import xyz.drena.exports.utils.ExportUnits;
 import xyz.drena.view.tools.Constants;
-import xyz.drena.view.tools.Messages;
 
-import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.LinkedList;
 
 public class ExportToImage extends AbstractExportable {
@@ -24,8 +21,8 @@ public class ExportToImage extends AbstractExportable {
 
     private BufferedImage getImage() {
         return new BufferedImage(
-                (int) Constants.GENERATOR_LAB_COLUMNS*Constants.EXPORT_VIEW_UNIT_SIZE,
-                (int) Constants.GENERATOR_LAB_ROWS*Constants.EXPORT_VIEW_UNIT_SIZE,
+                getCols()*Constants.EXPORT_VIEW_UNIT_SIZE,
+                getRows()*Constants.EXPORT_VIEW_UNIT_SIZE,
                 BufferedImage.TYPE_INT_RGB
         );
     }
@@ -45,6 +42,14 @@ public class ExportToImage extends AbstractExportable {
         });
 
         g2d.dispose();
+    }
+
+    private int getRows() {
+        return -1;
+    }
+
+    private int getCols() {
+        return -1;
     }
 
     private String getFormatName() {

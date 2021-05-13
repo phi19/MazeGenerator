@@ -1,6 +1,5 @@
 package xyz.drena.services;
 
-import xyz.drena.view.tools.Constants;
 import xyz.drena.view.tools.Messages;
 
 import javax.imageio.ImageIO;
@@ -17,14 +16,19 @@ public class PathsService {
     }
 
     private boolean canUseFile(File file) {
-        try {
-            return file.exists() || file.createNewFile() || canUseFolder(new File(file.getParent()));
-        } catch (IOException e) {
-            return canUseFolder(new File(file.getParent()));
+        while (!file.exists()) {
+            try {
+                if (!file.createNewFile()) {
+                    canUseFolder(new File(file.getParent()));
+                }
+            } catch (IOException e) {
+                canUseFolder(new File(file.getParent()));
+            }
         }
+        return true;
     }
 
-    public boolean writeToFile(String text, File file) {
+    public boolean writeToFile(File file, String text) {
         if (!canUseFile(file)) {
             return false;
         }
@@ -62,6 +66,7 @@ public class PathsService {
                 fileData.append(line).append("\n");
             }
             return fileData.toString();
+
         } catch (IOException ex) {
             System.out.println(Messages.SYSTEM_ERROR);
             return null;

@@ -3,7 +3,7 @@ package xyz.drena.view.menus;
 import org.academiadecodigo.bootcamp.scanners.integer.IntegerInputScanner;
 import org.academiadecodigo.bootcamp.scanners.menu.MenuInputScanner;
 import org.academiadecodigo.bootcamp.scanners.string.StringInputScanner;
-import xyz.drena.exports.ExportTypes;
+import xyz.drena.exports.utils.ExportTypes;
 import xyz.drena.controllers.menus.GenerationController;
 import xyz.drena.view.AbstractView;
 import xyz.drena.view.tools.Messages;

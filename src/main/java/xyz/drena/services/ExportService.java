@@ -1,7 +1,7 @@
 package xyz.drena.services;
 
-import xyz.drena.exports.AbstractExportable;
-import xyz.drena.exports.ExportUnits;
+import xyz.drena.exports.exportables.AbstractExportable;
+import xyz.drena.exports.utils.ExportUnits;
 import xyz.drena.maze.MazeGeneration;
 import xyz.drena.maze.transducer.Cell;
 import xyz.drena.maze.transducer.GroundType;
@@ -23,18 +23,21 @@ public class ExportService {
 
     public void export(String fileNamePrefix, int mazesNumber, AbstractExportable exportable) {
 
-        int start = 1 + getFinalImage(fileNamePrefix, exportable);
+        int start = 1 + getStartFile(fileNamePrefix, exportable);
 
         if (start < 1) { return; }
 
+        int rows = getRows();
+        int columns = getColumns();
+
         for (int i = start; i < start + mazesNumber; i++) {
             // me has to change
-            mazeGeneration.init((int) Constants.ALGORITHM_LAB_DEFAULT_ROWS, (int) Constants.ALGORITHM_LAB_DEFAULT_COLUMNS);
+            mazeGeneration.init(rows, columns);
             exportable.export(getExportUnits(mazeGeneration.getLabCells()), fileNamePrefix + i);
         }
     }
 
-    private int getFinalImage(String fileNamePrefix, AbstractExportable exportable) {
+    private int getStartFile(String fileNamePrefix, AbstractExportable exportable) {
 
         String[] filesArray = pathsService.getDirectoryList(new File(exportable.getExportType().getPath()));
 
@@ -43,13 +46,33 @@ public class ExportService {
             return -1;
         }
 
-        return Arrays.stream(filesArray)
+        return Arrays.stream(filesArray).parallel()
                 .filter(file -> file.matches(fileNamePrefix + "[0-9]+" + exportable.getExportType().getExtension()))
                 .map(file -> file.replace(fileNamePrefix, ""))
                 .map(file -> file.replace(exportable.getExportType().getExtension(), ""))
                 .map(Integer::parseInt)
                 .max(Integer::compare)
                 .orElse(0);
+    }
+
+    private int getRows() {
+        File rowsFile = new File(Constants.DEFAULT_ROWS_PATH);
+        try {
+            return (int) Double.parseDouble(pathsService.readFromFile(rowsFile));
+        } catch (NumberFormatException ex) {
+            pathsService.writeToFile(rowsFile, String.valueOf(Constants.GENERATOR_LAB_ROWS));
+            return Constants.GENERATOR_LAB_ROWS;
+        }
+    }
+
+    private int getColumns() {
+        File columnsFile = new File(Constants.DEFAULT_COLUMNS_PATH);
+        try {
+            return (int) Double.parseDouble(pathsService.readFromFile(columnsFile));
+        } catch (NumberFormatException ex) {
+            pathsService.writeToFile(columnsFile, String.valueOf(Constants.GENERATOR_LAB_COLUMNS));
+            return Constants.GENERATOR_LAB_COLUMNS;
+        }
     }
 
     private LinkedList<ExportUnits> getExportUnits(HashMap<Cell, GroundType> cells) {

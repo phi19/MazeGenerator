@@ -15,7 +15,7 @@ public abstract class AbstractChangeLengthController extends AbstractController 
     protected void resolveRequest(double value, String path) {
 
         if (value % 2 == 1) {
-            if (!pathsService.writeToFile(Double.toString(value), new File(path))) {
+            if (!pathsService.writeToFile(new File(path), Double.toString(value))) {
                 System.out.println(Messages.SYSTEM_ERROR);
             }
             return;

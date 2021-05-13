@@ -1,5 +1,7 @@
-package xyz.drena.exports;
+package xyz.drena.exports.exportables;
 
+import xyz.drena.exports.utils.ExportTypes;
+import xyz.drena.maze.MazeGeneration;
 import xyz.drena.services.PathsService;
 
 import java.io.File;
@@ -15,8 +17,5 @@ public abstract class AbstractExportable implements Exportable {
 
     public ExportTypes getExportType() { return exportType; }
 
-    protected File getFile(String fileName) {
-        return new File(exportType.getPath() + fileName + exportType.getExtension());
-    }
-
+    protected File getFile(String fileName) { return new File(exportType.getPath() + fileName + exportType.getExtension()); }
 }

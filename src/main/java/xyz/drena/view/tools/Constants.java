@@ -32,11 +32,11 @@ public class Constants {
     public static final String EXPORT_MAZE_PATH = EXPORTS_PATH + "mazes/";
     public static final String EXPORT_MAZE_EXTENSION = ".maze";
 
-    public static final double ALGORITHM_LAB_DEFAULT_ROWS = 14;
-    public static final double ALGORITHM_LAB_DEFAULT_COLUMNS = 11;
+    public static final int ALGORITHM_LAB_DEFAULT_ROWS = 14;
+    public static final int ALGORITHM_LAB_DEFAULT_COLUMNS = 11;
 
-    public static final double GENERATOR_LAB_ROWS = ALGORITHM_LAB_DEFAULT_ROWS * 2 + 1;
-    public static final double GENERATOR_LAB_COLUMNS = ALGORITHM_LAB_DEFAULT_COLUMNS * 2 + 1;
+    public static final int GENERATOR_LAB_ROWS = ALGORITHM_LAB_DEFAULT_ROWS * 2 + 1;
+    public static final int GENERATOR_LAB_COLUMNS = ALGORITHM_LAB_DEFAULT_COLUMNS * 2 + 1;
 
     public static final int VIEWER_DEFAULT_UNIT_SIZE = 25;
     public static final int VIEWER_PADDING = 10;

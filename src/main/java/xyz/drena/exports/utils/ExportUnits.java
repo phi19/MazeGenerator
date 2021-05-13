@@ -1,4 +1,4 @@
-package xyz.drena.exports;
+package xyz.drena.exports.utils;
 
 import xyz.drena.maze.Position;
 import xyz.drena.maze.transducer.GroundType;
