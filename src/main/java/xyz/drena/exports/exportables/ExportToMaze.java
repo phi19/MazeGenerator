@@ -1,14 +1,11 @@
 package xyz.drena.exports.exportables;
 
-import xyz.drena.exports.utils.ExportUnits;
 import xyz.drena.view.tools.Messages;
-
-import java.util.LinkedList;
 
 public class ExportToMaze extends AbstractExportable {
 
     @Override
-    public void export(LinkedList<ExportUnits> exportUnits, String fileName) {
+    public void export(String fileName) {
 
         System.out.println(Messages.MAINTENANCE_ERROR);
         //test(fileName);

@@ -10,7 +10,7 @@ import java.util.LinkedList;
 public class ExportToJson extends AbstractExportable {
 
     @Override
-    public void export(LinkedList<ExportUnits> exportUnits, String fileName) {
+    public void export(String fileName) {
 
         pathsService.writeToFile(getFile(fileName), getUnits(exportUnits));
     }

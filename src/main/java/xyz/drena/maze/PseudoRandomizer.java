@@ -7,8 +7,8 @@ public class PseudoRandomizer {
 
     private Random seed;
 
-    public void generateRandomSeed() {
-        seed = new Random((long) (Math.random()*Constants.RANDOMIZER_TOTAL_SEEDS));
+    public static long generateRandomSeed() {
+        return (long) (Math.random()*Constants.RANDOMIZER_TOTAL_SEEDS);
     }
 
     public void setSeed(long seed) {

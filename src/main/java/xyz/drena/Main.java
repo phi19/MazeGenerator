@@ -11,7 +11,7 @@ import xyz.drena.controllers.menus.MainController;
 import xyz.drena.exports.exportables.*;
 import xyz.drena.exports.utils.ExportTypes;
 import xyz.drena.services.PathsService;
-import xyz.drena.maze.MazeGeneration;
+import xyz.drena.maze.MazeAPI;
 import xyz.drena.services.EditService;
 import xyz.drena.services.ExportService;
 import xyz.drena.view.changeDefaults.ChangeColumnsView;
@@ -36,7 +36,7 @@ public class Main {
 
         // some initial independent properties && services
         Prompt prompt = new Prompt(System.in, System.out);
-        MazeGeneration mazeGeneration = new MazeGeneration();
+        MazeAPI mazeAPI = new MazeAPI();
         PathsService pathsService = new PathsService();
         ExportService exportService = new ExportService();
         EditService editService = new EditService();
@@ -100,10 +100,10 @@ public class Main {
 
         //independent properties to mazeGenService
         exportService.setPathsService(pathsService);
-        exportService.setMazeGeneration(mazeGeneration);
+        exportService.setMazeGeneration(mazeAPI);
 
         //independent properties to editService
-        editService.setMazeGeneration(mazeGeneration);
+        editService.setMazeGeneration(mazeAPI);
 
         //independent properties to exportToImage
         exportToImage.setPathsService(pathsService);

@@ -1,25 +1,21 @@
 package xyz.drena.services;
 
 import xyz.drena.exports.exportables.AbstractExportable;
-import xyz.drena.exports.utils.ExportUnits;
-import xyz.drena.maze.MazeGeneration;
-import xyz.drena.maze.transducer.Cell;
-import xyz.drena.maze.transducer.GroundType;
+import xyz.drena.maze.MazeAPI;
 import xyz.drena.view.tools.Constants;
 import xyz.drena.view.tools.Messages;
 
 import java.io.File;
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class ExportService {
 
     private PathsService pathsService;
-    private MazeGeneration mazeGeneration;
+    private MazeAPI mazeAPI;
 
     public void setPathsService(PathsService pathsService) { this.pathsService = pathsService; }
 
-    public void setMazeGeneration(MazeGeneration mazeGeneration) { this.mazeGeneration = mazeGeneration; }
+    public void setMazeGeneration(MazeAPI mazeAPI) { this.mazeAPI = mazeAPI; }
 
     public void export(String fileNamePrefix, int mazesNumber, AbstractExportable exportable) {
 
@@ -31,9 +27,8 @@ public class ExportService {
         int columns = getColumns();
 
         for (int i = start; i < start + mazesNumber; i++) {
-            // me has to change
-            mazeGeneration.init(rows, columns);
-            exportable.export(getExportUnits(mazeGeneration.getLabCells()), fileNamePrefix + i);
+            mazeAPI.init(rows, columns);
+            exportable.export(fileNamePrefix + i);
         }
     }
 
@@ -73,13 +68,5 @@ public class ExportService {
             pathsService.writeToFile(columnsFile, String.valueOf(Constants.GENERATOR_LAB_COLUMNS));
             return Constants.GENERATOR_LAB_COLUMNS;
         }
-    }
-
-    private LinkedList<ExportUnits> getExportUnits(HashMap<Cell, GroundType> cells) {
-
-        return cells.entrySet().parallelStream()
-                .filter(entry -> Constants.GROUND_TYPE_HASH_SET.contains(entry.getValue()))
-                .map(entry -> new ExportUnits(entry.getKey().getPosition(), entry.getValue()))
-                .collect(Collectors.toCollection(LinkedList::new));
     }
 }

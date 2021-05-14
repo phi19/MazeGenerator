@@ -2,7 +2,7 @@ package xyz.drena.services;
 
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import xyz.drena.exports.utils.ExportUnits;
-import xyz.drena.maze.MazeGeneration;
+import xyz.drena.maze.MazeAPI;
 import xyz.drena.maze.transducer.Cell;
 import xyz.drena.maze.transducer.GroundType;
 import xyz.drena.view.tools.Constants;
@@ -13,20 +13,20 @@ import java.util.stream.Collectors;
 
 public class EditService {
 
-    private MazeGeneration mazeGeneration;
+    private MazeAPI mazeAPI;
 
-    public void setMazeGeneration(MazeGeneration mazeGeneration) { this.mazeGeneration = mazeGeneration; }
+    public void setMazeGeneration(MazeAPI mazeAPI) { this.mazeAPI = mazeAPI; }
 
     public void init() {
         // for now, this is a "generate a random lab and edit it"
-        mazeGeneration.init(Constants.ALGORITHM_LAB_DEFAULT_ROWS, Constants.ALGORITHM_LAB_DEFAULT_COLUMNS);
-        view(getExportUnits(mazeGeneration.getLabCells()));
+        mazeAPI.init(Constants.ALGORITHM_LAB_DEFAULT_ROWS, Constants.ALGORITHM_LAB_DEFAULT_COLUMNS);
+        view(getExportUnits());
 
     }
 
-    private LinkedList<ExportUnits> getExportUnits(HashMap<Cell, GroundType> cells) {
+    private LinkedList<ExportUnits> getExportUnits() {
 
-        return cells.entrySet().parallelStream()
+        return mazeAPI.getMazeCells().entrySet().parallelStream()
                 .filter(entry -> Constants.GROUND_TYPE_HASH_SET.contains(entry.getValue()))
                 .map(entry -> new ExportUnits(entry.getKey().getPosition(), entry.getValue()))
                 .collect(Collectors.toCollection(LinkedList::new));
