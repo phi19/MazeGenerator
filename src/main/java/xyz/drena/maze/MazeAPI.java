@@ -69,10 +69,10 @@ public class MazeAPI {
 
             pseudoRandomizer.setSeed(seed);
 
-            algorithm.init(rows, columns);
-            transducer.init(rows*2+1, columns*2+1);
+            algorithm.init((rows - 1) / 2, (columns - 1) / 2);
+            transducer.init(rows, columns);
 
-            firstBlock(rows);
+            firstBlock((rows - 1) / 2);
 
             while(algorithm.hasNext()) {
                 nextBlock();
@@ -119,7 +119,6 @@ public class MazeAPI {
         private Cell blockToCell(Block block) {
             return new Cell(new Position(block.getPosition().getRow()*2 + 1, block.getPosition().getCol()*2 + 1));
         }
+
     }
-
-
 }

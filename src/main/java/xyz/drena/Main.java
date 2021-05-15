@@ -26,13 +26,10 @@ import java.util.Map;
 public class Main {
 
     public static void main(String[] args) {
-        Main main = new Main();
-        Controller mainController = main.bootStrap();
-        mainController.init();
-
+        bootStrap().init();
     }
 
-    private Controller bootStrap() {
+    private static Controller bootStrap() {
 
         // some initial independent properties && services
         Prompt prompt = new Prompt(System.in, System.out);
@@ -107,18 +104,22 @@ public class Main {
 
         //independent properties to exportToImage
         exportToImage.setPathsService(pathsService);
+        exportToImage.setMazeAPI(mazeAPI);
         exportToImage.setExportType(ExportTypes.TO_IMAGE);
 
         //independent properties to exportToJson
         exportToJson.setPathsService(pathsService);
+        exportToJson.setMazeAPI(mazeAPI);
         exportToJson.setExportType(ExportTypes.TO_JSON);
 
         //independent properties to exportToMaze
         exportToMaze.setPathsService(pathsService);
+        exportToMaze.setMazeAPI(mazeAPI);
         exportToMaze.setExportType(ExportTypes.TO_MAZE);
 
         //independent properties to exportToSeed
         exportToSeed.setPathsService(pathsService);
+        exportToMaze.setMazeAPI(mazeAPI);
         exportToSeed.setExportType(ExportTypes.TO_SEED);
 
         // setup the mainMenuController map

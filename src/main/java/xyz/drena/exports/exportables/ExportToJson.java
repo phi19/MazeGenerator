@@ -12,13 +12,13 @@ public class ExportToJson extends AbstractExportable {
     @Override
     public void export(String fileName) {
 
-        pathsService.writeToFile(getFile(fileName), getUnits(exportUnits));
+        pathsService.writeToFile(getFile(fileName), getJsonUnits());
     }
 
-    private String getUnits(LinkedList<ExportUnits> exportUnits) {
+    private String getJsonUnits() {
         JSONArray jsonUnitsArray = new JSONArray();
 
-        for (ExportUnits exportUnit : exportUnits) {
+        for (ExportUnits exportUnit : getExportUnits()) {
             JSONObject jsonUnit = new JSONObject();
             jsonUnit.put(Constants.EXPORT_JSON_ROW_OBJECT, exportUnit.getRow());
             jsonUnit.put(Constants.EXPORT_JSON_COLUMN_OBJECT, exportUnit.getCol());

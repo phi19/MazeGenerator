@@ -3,11 +3,8 @@ package xyz.drena.services;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import xyz.drena.exports.utils.ExportUnits;
 import xyz.drena.maze.MazeAPI;
-import xyz.drena.maze.transducer.Cell;
-import xyz.drena.maze.transducer.GroundType;
 import xyz.drena.view.tools.Constants;
 
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.stream.Collectors;
 
@@ -18,8 +15,11 @@ public class EditService {
     public void setMazeGeneration(MazeAPI mazeAPI) { this.mazeAPI = mazeAPI; }
 
     public void init() {
-        // for now, this is a "generate a random lab and edit it"
-        mazeAPI.init(Constants.ALGORITHM_LAB_DEFAULT_ROWS, Constants.ALGORITHM_LAB_DEFAULT_COLUMNS);
+        // getFile -> rows, columns, seed
+        int rows = 0;
+        int columns = 0;
+        int seed = 0;
+        mazeAPI.init(rows, columns, seed);
         view(getExportUnits());
 
     }
@@ -33,11 +33,10 @@ public class EditService {
     }
 
     private void view(LinkedList<ExportUnits> exportUnits) {
-
         exportUnits.forEach(exportUnit -> {
             Rectangle rectangle = new Rectangle(
-                    Constants.VIEWER_PADDING + exportUnit.getCol()*getViewerUnitSize(),
-                    Constants.VIEWER_PADDING + exportUnit.getRow()*getViewerUnitSize(),
+                    Constants.VIEWER_BORDER_PADDING + exportUnit.getCol()*getViewerUnitSize(),
+                    Constants.VIEWER_BORDER_PADDING + exportUnit.getRow()*getViewerUnitSize(),
                     getViewerUnitSize(),
                     getViewerUnitSize()
             );
@@ -47,10 +46,8 @@ public class EditService {
     }
 
     private int getViewerUnitSize() {
-        if (Constants.VIEWER_DEFAULT_UNIT_SIZE * Constants.GENERATOR_LAB_ROWS > Constants.VIEWER_MAXIMUM_HEIGHT) {
-            return (Constants.VIEWER_MAXIMUM_HEIGHT / Constants.GENERATOR_LAB_ROWS);
-        } else {
-            return Constants.VIEWER_DEFAULT_UNIT_SIZE;
-        }
+        boolean isMazeBiggerThanWindow = Constants.VIEWER_UNIT_SIZE * mazeAPI.getRows() > Constants.VIEWER_MAXIMUM_HEIGHT;
+        int divideFactor = isMazeBiggerThanWindow ? mazeAPI.getRows() : 1;
+        return Constants.VIEWER_UNIT_SIZE / divideFactor;
     }
 }

@@ -19,32 +19,28 @@ public class Constants {
 
     public static final String EXPORT_IMAGE_PATH = EXPORTS_PATH + "images/";
     public static final String EXPORT_IMAGE_EXTENSION = ".png";
+    public static final int EXPORT_IMAGE_UNIT_SIZE = 60;
 
     public static final String EXPORT_SEED_PATH = EXPORTS_PATH + "seeds/";
     public static final String EXPORT_SEED_EXTENSION = ".seed";
+    public static final int RANDOMIZER_TOTAL_SEEDS = 16000000;
 
     public static final String EXPORT_JSON_PATH = EXPORTS_PATH + "json/";
+    public static final String EXPORT_JSON_EXTENSION = ".json";
     public static final String EXPORT_JSON_ROW_OBJECT = "Row";
     public static final String EXPORT_JSON_COLUMN_OBJECT = "Column";
     public static final String EXPORT_JSON_GROUND_TYPE_OBJECT = "GroundType";
-    public static final String EXPORT_JSON_EXTENSION = ".json";
 
     public static final String EXPORT_MAZE_PATH = EXPORTS_PATH + "mazes/";
     public static final String EXPORT_MAZE_EXTENSION = ".maze";
 
-    public static final int ALGORITHM_LAB_DEFAULT_ROWS = 14;
-    public static final int ALGORITHM_LAB_DEFAULT_COLUMNS = 11;
+    public static final int GENERATOR_LAB_ROWS = 29;
+    public static final int GENERATOR_LAB_COLUMNS = 23;
 
-    public static final int GENERATOR_LAB_ROWS = ALGORITHM_LAB_DEFAULT_ROWS * 2 + 1;
-    public static final int GENERATOR_LAB_COLUMNS = ALGORITHM_LAB_DEFAULT_COLUMNS * 2 + 1;
+    public static final int VIEWER_UNIT_SIZE = 25;
+    public static final int VIEWER_BORDER_PADDING = 10;
+    private static final int VIEWER_WINDOW_PADDING = 90;
+    public static final int VIEWER_MAXIMUM_HEIGHT = 1080 - VIEWER_WINDOW_PADDING*2;
 
-    public static final int VIEWER_DEFAULT_UNIT_SIZE = 25;
-    public static final int VIEWER_PADDING = 10;
-    public static final int VIEWER_MAXIMUM_HEIGHT = 1080 - 90*2;
-
-    public static final int RANDOMIZER_TOTAL_SEEDS = 16000000;
-    public static final int RANDOMIZER_DEFAULT_SEED = 69*69; // in a file
-
-    public static final int EXPORT_VIEW_UNIT_SIZE = 60;
     public static final HashSet<GroundType> GROUND_TYPE_HASH_SET = new HashSet<>(Arrays.asList(GroundType.FLOOR, GroundType.WALL));
 }
