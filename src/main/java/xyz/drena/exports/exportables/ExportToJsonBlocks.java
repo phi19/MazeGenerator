@@ -7,7 +7,7 @@ import xyz.drena.view.tools.Constants;
 
 import java.util.LinkedList;
 
-public class ExportToJson extends AbstractExportable {
+public class ExportToJsonBlocks extends AbstractExportable {
 
     @Override
     public void export(String fileName) {

@@ -38,9 +38,9 @@ public class Main {
         ExportService exportService = new ExportService();
         EditService editService = new EditService();
         AbstractExportable exportToImage = new ExportToImage();
-        AbstractExportable exportToJson = new ExportToJson();
+        AbstractExportable exportToJsonBlocks = new ExportToJsonBlocks();
         AbstractExportable exportToMaze = new ExportToMaze();
-        AbstractExportable exportToSeed = new ExportToSeed();
+        AbstractExportable exportToJsonGen = new ExportToJsonGen();
 
         // mainVC
         MainView mainView = new MainView();
@@ -107,20 +107,20 @@ public class Main {
         exportToImage.setMazeAPI(mazeAPI);
         exportToImage.setExportType(ExportTypes.TO_IMAGE);
 
-        //independent properties to exportToJson
-        exportToJson.setPathsService(pathsService);
-        exportToJson.setMazeAPI(mazeAPI);
-        exportToJson.setExportType(ExportTypes.TO_JSON);
+        //independent properties to exportToJsonBlocks
+        exportToJsonBlocks.setPathsService(pathsService);
+        exportToJsonBlocks.setMazeAPI(mazeAPI);
+        exportToJsonBlocks.setExportType(ExportTypes.TO_JSON_BLOCKS);
 
         //independent properties to exportToMaze
         exportToMaze.setPathsService(pathsService);
         exportToMaze.setMazeAPI(mazeAPI);
         exportToMaze.setExportType(ExportTypes.TO_MAZE);
 
-        //independent properties to exportToSeed
-        exportToSeed.setPathsService(pathsService);
+        //independent properties to exportToJsonGen
+        exportToJsonGen.setPathsService(pathsService);
         exportToMaze.setMazeAPI(mazeAPI);
-        exportToSeed.setExportType(ExportTypes.TO_SEED);
+        exportToJsonGen.setExportType(ExportTypes.TO_JSON_GEN);
 
         // setup the mainMenuController map
         Map<Integer, Controller> mainControllerMap = new HashMap<>();
@@ -140,9 +140,9 @@ public class Main {
         // setup the exportTypes map
         Map<Integer, AbstractExportable> exportableMap = new HashMap<>();
         exportableMap.put(ExportTypes.TO_IMAGE.getOption(), exportToImage);
-        exportableMap.put(ExportTypes.TO_JSON.getOption(), exportToJson);
+        exportableMap.put(ExportTypes.TO_JSON_BLOCKS.getOption(), exportToJsonBlocks);
         exportableMap.put(ExportTypes.TO_MAZE.getOption(), exportToMaze);
-        exportableMap.put(ExportTypes.TO_SEED.getOption(), exportToSeed);
+        exportableMap.put(ExportTypes.TO_JSON_GEN.getOption(), exportToJsonGen);
 
         generationController.setExportTypesMap(exportableMap);
 

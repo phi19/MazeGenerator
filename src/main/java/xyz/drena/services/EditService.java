@@ -11,8 +11,11 @@ import java.util.stream.Collectors;
 public class EditService {
 
     private MazeAPI mazeAPI;
+    private PathsService pathsService;
 
     public void setMazeGeneration(MazeAPI mazeAPI) { this.mazeAPI = mazeAPI; }
+
+    public void setPathsService(PathsService pathsService) { this.pathsService = pathsService; }
 
     public void init() {
         // getFile -> rows, columns, seed
