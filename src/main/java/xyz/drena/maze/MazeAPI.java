@@ -23,6 +23,13 @@ public class MazeAPI {
         mazeGeneration = new MazeGeneration();
     }
 
+    public void init() {
+        this.rows = Constants.GENERATOR_LAB_ROWS;
+        this.columns = Constants.GENERATOR_LAB_COLUMNS;
+        this.seed = generateRandomSeed();
+        mazeGeneration.startFlow(rows, columns, seed);
+    }
+
     public void init(int rows, int columns) {
         this.rows = rows;
         this.columns = columns;

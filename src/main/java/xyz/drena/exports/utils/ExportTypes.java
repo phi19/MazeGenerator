@@ -7,9 +7,8 @@ public enum ExportTypes {
 
     TO_IMAGE(1, Messages.VIEW_EXPORT_IMAGE, Constants.EXPORT_IMAGE_PATH, Constants.EXPORT_IMAGE_EXTENSION),
     TO_JSON_BLOCKS(2, Messages.VIEW_EXPORT_JSON, Constants.EXPORT_JSON_PATH, Constants.EXPORT_JSON_EXTENSION),
-    TO_MAZE(3, Messages.VIEW_EXPORT_MAZE, Constants.EXPORT_MAZE_PATH, Constants.EXPORT_MAZE_EXTENSION),
-    TO_JSON_GEN(4, Messages.VIEW_EXPORT_SEED, Constants.EXPORT_JSON_GEN_PATH, Constants.EXPORT_JSON_GEN_EXTENSION),
-    CANCEL(5, Messages.VIEW_EXPORT_CANCEL, "", "");
+    TO_XML_GEN(3, Messages.VIEW_EXPORT_SEED, Constants.EXPORT_JSON_GEN_PATH, Constants.EXPORT_JSON_GEN_EXTENSION),
+    CANCEL(4, Messages.VIEW_EXPORT_CANCEL, "", "");
 
     private final int option;
     private final String message;

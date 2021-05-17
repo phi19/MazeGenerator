@@ -1,6 +1,9 @@
 package xyz.drena;
 
 import org.academiadecodigo.bootcamp.Prompt;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.json.JSONTokener;
 import xyz.drena.controllers.Controller;
 import xyz.drena.controllers.defaultChanges.ChangeColumnsController;
 import xyz.drena.controllers.defaultChanges.ChangeRowsController;
@@ -8,18 +11,26 @@ import xyz.drena.controllers.menus.DefaultsController;
 import xyz.drena.controllers.menus.EditController;
 import xyz.drena.controllers.menus.GenerationController;
 import xyz.drena.controllers.menus.MainController;
-import xyz.drena.exports.exportables.*;
+import xyz.drena.exports.exportables.AbstractExportable;
+import xyz.drena.exports.exportables.ExportToImage;
+import xyz.drena.exports.exportables.ExportToJsonBlocks;
+import xyz.drena.exports.exportables.ExportToJsonGen;
 import xyz.drena.exports.utils.ExportTypes;
-import xyz.drena.services.PathsService;
 import xyz.drena.maze.MazeAPI;
 import xyz.drena.services.EditService;
 import xyz.drena.services.ExportService;
+import xyz.drena.services.PathsService;
 import xyz.drena.view.changeDefaults.ChangeColumnsView;
 import xyz.drena.view.changeDefaults.ChangeRowsView;
 import xyz.drena.view.menuOptions.DefaultsOptions;
 import xyz.drena.view.menuOptions.MainOptions;
-import xyz.drena.view.menus.*;
+import xyz.drena.view.menus.DefaultsView;
+import xyz.drena.view.menus.EditView;
+import xyz.drena.view.menus.GenerationView;
+import xyz.drena.view.menus.MainView;
+import xyz.drena.view.tools.Constants;
 
+import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -39,7 +50,6 @@ public class Main {
         EditService editService = new EditService();
         AbstractExportable exportToImage = new ExportToImage();
         AbstractExportable exportToJsonBlocks = new ExportToJsonBlocks();
-        AbstractExportable exportToMaze = new ExportToMaze();
         AbstractExportable exportToJsonGen = new ExportToJsonGen();
 
         // mainVC
@@ -112,15 +122,10 @@ public class Main {
         exportToJsonBlocks.setMazeAPI(mazeAPI);
         exportToJsonBlocks.setExportType(ExportTypes.TO_JSON_BLOCKS);
 
-        //independent properties to exportToMaze
-        exportToMaze.setPathsService(pathsService);
-        exportToMaze.setMazeAPI(mazeAPI);
-        exportToMaze.setExportType(ExportTypes.TO_MAZE);
-
         //independent properties to exportToJsonGen
         exportToJsonGen.setPathsService(pathsService);
         exportToJsonGen.setMazeAPI(mazeAPI);
-        exportToJsonGen.setExportType(ExportTypes.TO_JSON_GEN);
+        exportToJsonGen.setExportType(ExportTypes.TO_XML_GEN);
 
         // setup the mainMenuController map
         Map<Integer, Controller> mainControllerMap = new HashMap<>();
@@ -141,8 +146,7 @@ public class Main {
         Map<Integer, AbstractExportable> exportableMap = new HashMap<>();
         exportableMap.put(ExportTypes.TO_IMAGE.getOption(), exportToImage);
         exportableMap.put(ExportTypes.TO_JSON_BLOCKS.getOption(), exportToJsonBlocks);
-        exportableMap.put(ExportTypes.TO_MAZE.getOption(), exportToMaze);
-        exportableMap.put(ExportTypes.TO_JSON_GEN.getOption(), exportToJsonGen);
+        exportableMap.put(ExportTypes.TO_XML_GEN.getOption(), exportToJsonGen);
 
         generationController.setExportTypesMap(exportableMap);
 

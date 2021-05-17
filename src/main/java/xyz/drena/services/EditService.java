@@ -5,6 +5,7 @@ import xyz.drena.exports.utils.ExportUnits;
 import xyz.drena.maze.MazeAPI;
 import xyz.drena.view.tools.Constants;
 
+import java.io.File;
 import java.util.LinkedList;
 import java.util.stream.Collectors;
 
@@ -19,10 +20,9 @@ public class EditService {
 
     public void init() {
         // getFile -> rows, columns, seed
-        int rows = 0;
-        int columns = 0;
-        int seed = 0;
-        mazeAPI.init(rows, columns, seed);
+        double s = System.nanoTime();
+        mazeAPI.init();
+        System.out.println(s - System.nanoTime());
         view(getExportUnits());
 
     }

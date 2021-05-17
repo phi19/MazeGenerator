@@ -37,7 +37,6 @@ public class Messages {
 
     public static final String VIEW_EXPORT_JSON = "JSON Blocks file";
     public static final String VIEW_EXPORT_IMAGE = "Image file";
-    public static final String VIEW_EXPORT_MAZE = "Editable file";
     public static final String VIEW_EXPORT_SEED = "JSON Gen file";
     public static final String VIEW_EXPORT_CANCEL = "Go back";
 

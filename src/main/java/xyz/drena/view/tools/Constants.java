@@ -34,9 +34,6 @@ public class Constants {
     public static final String EXPORT_JSON_BLOCKS_COLUMN_OBJECT = "Column";
     public static final String EXPORT_JSON_BLOCKS_GROUND_TYPE_OBJECT = "GroundType";
 
-    public static final String EXPORT_MAZE_PATH = EXPORTS_PATH + "mazes/";
-    public static final String EXPORT_MAZE_EXTENSION = ".maze";
-
     public static final int GENERATOR_LAB_ROWS = 29;
     public static final int GENERATOR_LAB_COLUMNS = 23;
 
