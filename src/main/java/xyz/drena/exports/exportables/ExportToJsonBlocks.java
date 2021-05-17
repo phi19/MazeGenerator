@@ -5,8 +5,6 @@ import org.json.JSONObject;
 import xyz.drena.exports.utils.ExportUnits;
 import xyz.drena.view.tools.Constants;
 
-import java.util.LinkedList;
-
 public class ExportToJsonBlocks extends AbstractExportable {
 
     @Override
@@ -20,9 +18,9 @@ public class ExportToJsonBlocks extends AbstractExportable {
 
         for (ExportUnits exportUnit : getExportUnits()) {
             JSONObject jsonUnit = new JSONObject();
-            jsonUnit.put(Constants.EXPORT_JSON_ROW_OBJECT, exportUnit.getRow());
-            jsonUnit.put(Constants.EXPORT_JSON_COLUMN_OBJECT, exportUnit.getCol());
-            jsonUnit.put(Constants.EXPORT_JSON_GROUND_TYPE_OBJECT, exportUnit.getGroundType());
+            jsonUnit.put(Constants.EXPORT_JSON_BLOCKS_ROW_OBJECT, exportUnit.getRow());
+            jsonUnit.put(Constants.EXPORT_JSON_BLOCKS_COLUMN_OBJECT, exportUnit.getCol());
+            jsonUnit.put(Constants.EXPORT_JSON_BLOCKS_GROUND_TYPE_OBJECT, exportUnit.getGroundType());
 
             jsonUnitsArray.put(jsonUnit);
         }

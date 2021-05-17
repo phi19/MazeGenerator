@@ -119,7 +119,7 @@ public class Main {
 
         //independent properties to exportToJsonGen
         exportToJsonGen.setPathsService(pathsService);
-        exportToMaze.setMazeAPI(mazeAPI);
+        exportToJsonGen.setMazeAPI(mazeAPI);
         exportToJsonGen.setExportType(ExportTypes.TO_JSON_GEN);
 
         // setup the mainMenuController map

@@ -20,8 +20,8 @@ public class Messages {
     public static final String VIEW_DEFAULTS_COLUMNS = "Set Default Columns";
     public static final String VIEW_DEFAULTS_QUIT = "Go back";
 
-    public static final String VIEW_SET_LENGTH_MESSAGE_PREFIX = "\nInsert how many ";
-    public static final String VIEW_SET_LENGTH_MESSAGE_SUFFIX = " you want the maze to have: ";
+    private static final String VIEW_SET_LENGTH_MESSAGE_PREFIX = "\nInsert how many ";
+    private static final String VIEW_SET_LENGTH_MESSAGE_SUFFIX = " you want the maze to have: ";
     public static final String VIEW_SET_LENGTH_ROWS = VIEW_SET_LENGTH_MESSAGE_PREFIX + "rows" + VIEW_SET_LENGTH_MESSAGE_SUFFIX;
     public static final String VIEW_SET_LENGTH_COLUMNS = VIEW_SET_LENGTH_MESSAGE_PREFIX + "columns" + VIEW_SET_LENGTH_MESSAGE_SUFFIX;
     public static final String VIEW_SET_LENGTH_ERROR = "That is not a valid number! \nIt has to be a POSITIVE ODD INTEGER.";
@@ -35,10 +35,10 @@ public class Messages {
     public static final String VIEW_EXPORT_MESSAGE = "To what format do you want to export the mazes? ";
     public static final String VIEW_EXPORT_ERROR = "That export type doesn't exist!";
 
-    public static final String VIEW_EXPORT_JSON = "JSON file";
+    public static final String VIEW_EXPORT_JSON = "JSON Blocks file";
     public static final String VIEW_EXPORT_IMAGE = "Image file";
     public static final String VIEW_EXPORT_MAZE = "Editable file";
-    public static final String VIEW_EXPORT_SEED = "Seed number (in a file)";
+    public static final String VIEW_EXPORT_SEED = "JSON Gen file";
     public static final String VIEW_EXPORT_CANCEL = "Go back";
 
 }

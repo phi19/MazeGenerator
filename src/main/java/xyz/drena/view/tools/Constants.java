@@ -21,15 +21,18 @@ public class Constants {
     public static final String EXPORT_IMAGE_EXTENSION = ".png";
     public static final int EXPORT_IMAGE_UNIT_SIZE = 60;
 
-    public static final String EXPORT_SEED_PATH = EXPORTS_PATH + "seeds/";
-    public static final String EXPORT_SEED_EXTENSION = ".seed";
+    public static final String EXPORT_JSON_GEN_PATH = EXPORTS_PATH + "gen_json/";
+    public static final String EXPORT_JSON_GEN_EXTENSION = ".json";
+    public static final String EXPORT_JSON_GEN_ROWS_OBJECT = "Rows";
+    public static final String EXPORT_JSON_GEN_COLUMNS_OBJECT = "Columns";
+    public static final String EXPORT_JSON_GEN_SEED_OBJECT = "Seed";
     public static final int RANDOMIZER_TOTAL_SEEDS = 16000000;
 
-    public static final String EXPORT_JSON_PATH = EXPORTS_PATH + "json/";
+    public static final String EXPORT_JSON_PATH = EXPORTS_PATH + "blocks_json/";
     public static final String EXPORT_JSON_EXTENSION = ".json";
-    public static final String EXPORT_JSON_ROW_OBJECT = "Row";
-    public static final String EXPORT_JSON_COLUMN_OBJECT = "Column";
-    public static final String EXPORT_JSON_GROUND_TYPE_OBJECT = "GroundType";
+    public static final String EXPORT_JSON_BLOCKS_ROW_OBJECT = "Row";
+    public static final String EXPORT_JSON_BLOCKS_COLUMN_OBJECT = "Column";
+    public static final String EXPORT_JSON_BLOCKS_GROUND_TYPE_OBJECT = "GroundType";
 
     public static final String EXPORT_MAZE_PATH = EXPORTS_PATH + "mazes/";
     public static final String EXPORT_MAZE_EXTENSION = ".maze";

@@ -26,7 +26,8 @@ public class MazeAPI {
     public void init(int rows, int columns) {
         this.rows = rows;
         this.columns = columns;
-        mazeGeneration.startFlow(rows, columns, generateRandomSeed());
+        this.seed = generateRandomSeed();
+        mazeGeneration.startFlow(rows, columns, seed);
     }
 
     public void init(int rows, int columns, long seed) {
