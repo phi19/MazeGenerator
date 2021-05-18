@@ -29,7 +29,7 @@ public class Messages {
     public static final String VIEW_NUMBER_MAZES_MESSAGE = "\nHow many mazes do you want to generate? ";
     public static final String VIEW_NUMBER_MAZES_ERROR = "That is not a valid number!";
 
-    public static final String VIEW_FILENAME_MESSAGE = "\nInsert the name of the file(s): ";
+    public static final String VIEW_FILENAME_MESSAGE = "\nInsert the name of the file(s) to export: ";
     public static final String VIEW_FILENAME_ERROR = "That is not a valid name!";
 
     public static final String VIEW_EXPORT_MESSAGE = "To what format do you want to export the mazes? ";
@@ -40,4 +40,6 @@ public class Messages {
     public static final String VIEW_EXPORT_SEED = "JSON Gen file";
     public static final String VIEW_EXPORT_CANCEL = "Go back";
 
+    public static final String EDIT_FILENAME_MESSAGE = "\nInsert the name of the file to import: ";
+    public static final String EDIT_FILENAME_ERROR = "That is not a valid name!";
 }

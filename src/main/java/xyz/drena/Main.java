@@ -1,9 +1,6 @@
 package xyz.drena;
 
 import org.academiadecodigo.bootcamp.Prompt;
-import org.json.JSONArray;
-import org.json.JSONObject;
-import org.json.JSONTokener;
 import xyz.drena.controllers.Controller;
 import xyz.drena.controllers.defaultChanges.ChangeColumnsController;
 import xyz.drena.controllers.defaultChanges.ChangeRowsController;
@@ -28,9 +25,6 @@ import xyz.drena.view.menus.DefaultsView;
 import xyz.drena.view.menus.EditView;
 import xyz.drena.view.menus.GenerationView;
 import xyz.drena.view.menus.MainView;
-import xyz.drena.view.tools.Constants;
-
-import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 

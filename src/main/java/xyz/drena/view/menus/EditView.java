@@ -19,8 +19,8 @@ public class EditView extends AbstractView {
 
     private void showMenu() {
         StringInputScanner scanner = new StringInputScanner();
-        scanner.setMessage(Messages.VIEW_FILENAME_MESSAGE);
-        scanner.setError(Messages.VIEW_FILENAME_ERROR);
+        scanner.setMessage(Messages.EDIT_FILENAME_MESSAGE);
+        scanner.setError(Messages.EDIT_FILENAME_ERROR);
         editController.start(prompt.getUserInput(scanner));
     }
 }

@@ -1,10 +1,20 @@
 package xyz.drena.services;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+import xyz.drena.exports.utils.ExportUnits;
+import xyz.drena.imports.utils.ImportUnits;
+import xyz.drena.view.tools.Constants;
 import xyz.drena.view.tools.Messages;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.*;
+import java.util.HashMap;
+import java.util.LinkedList;
 
 public class PathsService {
 
@@ -80,4 +90,38 @@ public class PathsService {
         return directory.list();
     }
 
+    public boolean writeToJsonBlocks(File file, LinkedList<ExportUnits> exportUnits) {
+
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            objectMapper.writeValue(file, exportUnits);
+            return true;
+        } catch (IOException ex) {
+            System.out.println(Messages.SYSTEM_ERROR);
+            return false;
+        }
+    }
+
+    public boolean writeToJsonGen(File file, HashMap<String, Double> genDetails) {
+
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            objectMapper.writeValue(file, genDetails);
+            return true;
+        } catch (IOException ex) {
+            System.out.println(Messages.SYSTEM_ERROR);
+            return false;
+        }
+    }
+
+    public LinkedList<ImportUnits> readFromJson(File file) {
+
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+            return mapper.readValue(file, LinkedList.class);
+        } catch (IOException e) {
+            System.out.println(Messages.SYSTEM_ERROR);
+            return null;
+        }
+    }
 }
